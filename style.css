@@ -1,0 +1,36 @@
+#header {
+/*    height: 50px;*/
+    background-color: #777;
+    font-family: 'Shift', sans-serif;
+}
+#menu {
+    position: relative;
+    left: 340px;
+    display: inline-block;
+}
+#menu li{
+    font-weight: bold;
+    display: inline;
+    margin-right: 14px;
+}
+
+#game {
+  margin: 5px;
+  padding-top: 20px;
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+
+#gameinfo {
+	padding-right: 100px;
+	position: fixed;
+	left: 15%;
+}
+
+canvas {
+  background-color: rgba(128, 128, 128, 0.5);
+}
