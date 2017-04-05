@@ -103,7 +103,7 @@ Game.prototype.fillBoard = function(){
     var bottomRow = boardBottom();
 
     var self = this;
-    if(this.board.length -1 <= 80){
+    if(this.board.length - 1 <= 80){
 	   self.createRow(bottomRow.posy + 1, bottomRow.y + 56);
     }
 }
@@ -247,25 +247,11 @@ Game.prototype.gameend = function(){
     this.board.length = 0;
     this.selector = null;
 
-    var counter = 4;
-    var countdown = setInterval(function(){
-        counter--;
-        if(counter <= 0){
-            clearInterval(countdown);
-            counter = 4;
-        }else{
-            for(var i = this.canvas.height; i > 0; i--){
-                this.ctx.clearRect(0, i, this.canvas.width, 56);  
-            }
-            this.ctx.strokeStyle = 'white';
-            this.ctx.textAlign = 'center';
-            this.ctx.font = '30px Arial';
-            this.ctx.fillText('GAME OVER', game.canvas.width / 2, game.canvas.height / 2);
-        }
-    }, 1000);
-
-    
-
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.strokeStyle = 'white';
+    this.ctx.textAlign = 'center';
+    this.ctx.font = '30px Arial';
+    this.ctx.fillText('GAME OVER', game.canvas.width / 2, game.canvas.height / 2);
 }
 
 Game.prototype.pause = function(){
@@ -289,8 +275,8 @@ Game.prototype.update = function(){
         	this.selector.update();
         	this.findMatch();
         	this.moveDown();
-        	this.isOver();
             this.fillBoard();
+        	this.isOver();
         }
 
         window.addEventListener('keydown', keyActions, true);
@@ -332,7 +318,7 @@ Game.prototype.display = function(){
  	
     }
     var self = this;
-    requestAnimationFrame(function(){
+    var maindisplay = requestAnimationFrame(function(){
         self.display();
     });
 }
