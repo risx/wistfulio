@@ -8,11 +8,12 @@ var speed = function(fps){
 }
 
 var Game = function(){
+    this.running = false;
     this.canvas = document.querySelector('#wistful');
     this.ctx = this.canvas.getContext('2d');
  
     this.board = [];
-    this.selector = new Block();
+    this.selector = null;
     this.score = 0;
     this.speed = 0.3;
     this.time = 0;
@@ -21,16 +22,31 @@ var Game = function(){
 
     this.rows = 14;
     this.cols = 6;
-    this.blocksize = 56;
+    this.blocksize = 56; 
 
-    this.startTime = Math.floor(Date.now() / 1000);
+    this.startTime = 0;   
     
 }
  
 Game.prototype.start = function(){
+    this.running = true;
+    this.board.length = 0;
+    this.selector = 0;
+    this.score = 0;
+    this.speed = 0.3;
+    this.time = 0;
+    this.state = null;
+    this.rowselection = 0;
+
+    this.rows = 14;
+    this.cols = 6;
+    this.blocksize = 56; 
+
+    this.startTime = Math.floor(Date.now() / 1000);
+
     var counter = 4;
 
-   var countdown = setInterval(function(){
+    var countdown = setInterval(function(){
         counter--;
         if(counter <= 0){
             clearInterval(countdown);
@@ -39,6 +55,7 @@ Game.prototype.start = function(){
             game.initBoard();
             game.update();
             game.display();
+            counter = 4;
             
         }else{
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -48,10 +65,12 @@ Game.prototype.start = function(){
             this.ctx.fillText(counter, game.canvas.width / 2, game.canvas.height / 2);
         }
     }, 1000);
-
+   
 }
 
 Game.prototype.initSelector = function(x, y){
+    this.selector = new Block();
+
     this.selector.width = 112;
 
     this.selector.posy = y;
@@ -64,6 +83,7 @@ Game.prototype.isOver = function(){
     for(var i = 0; i < this.board.length; i++){
         if (this.board[i].y <= 0){
             this.state = 'gameover';
+            this.gameend();    
         }
     }
 }
@@ -222,6 +242,32 @@ Game.prototype.findMatch = function(){
     }
 }
 
+Game.prototype.gameend = function(){
+    this.running = false;
+    this.board.length = 0;
+    this.selector = null;
+
+    var counter = 4;
+    var countdown = setInterval(function(){
+        counter--;
+        if(counter <= 0){
+            clearInterval(countdown);
+            counter = 4;
+        }else{
+            for(var i = this.canvas.height; i > 0; i--){
+                this.ctx.clearRect(0, i, this.canvas.width, 56);  
+            }
+            this.ctx.strokeStyle = 'white';
+            this.ctx.textAlign = 'center';
+            this.ctx.font = '30px Arial';
+            this.ctx.fillText('GAME OVER', game.canvas.width / 2, game.canvas.height / 2);
+        }
+    }, 1000);
+
+    
+
+}
+
 Game.prototype.pause = function(){
     this.selector.stop();
     for(var i = 0; i < this.board.length; i++){
@@ -274,16 +320,17 @@ Game.prototype.update = function(){
 }
  
 Game.prototype.display = function(){
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    
-    for(var i = 0; i < this.board.length; i++){
-        if(this.board[i].y < 700){
-           draw(this.board[i], 'block');
-        } 
-    }
-    draw(this.selector);
+    if(game.state == 'active'){
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        for(var i = 0; i < this.board.length; i++){
+            if(this.board[i].y < 700){
+               draw(this.board[i], 'block');
+            } 
+        }
+        draw(this.selector);
  	
-
+    }
     var self = this;
     requestAnimationFrame(function(){
         self.display();
@@ -304,12 +351,14 @@ window.onload = function(){
 
     loadImages(sprites, function(imgs){
     	images = imgs;
-    	//start();
+    	game = new Game();
     })
  
 }
 
 var start = function(){
-    game = new Game();
-    game.start();
+    if(game.running == false){
+        game.start(); 
+    }
+
 }

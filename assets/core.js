@@ -162,7 +162,10 @@ var draw = function(object, type){
 }
 
 var keyActions = function(e){
-    e.preventDefault();
+	if(e !== 37 || e !== 38 || e !== 39 || e !== 40
+		|| e !== 68 || e !== 83 || e !== 87 || e !== 16){
+		e.preventDefault();
+	}
 	// 37 - < // 87 - W // 38 - ^ // 83 - S// 39 - > 
 	// 65 - A// 40 - V // 68 - D// 80 - P// 16 - Shift
     if(game.state == 'active'){
