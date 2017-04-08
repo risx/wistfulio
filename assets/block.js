@@ -10,6 +10,8 @@ var Block = function(){
     this.posy = 0;
 
     this.destroy = false;
+    this.destroypos = 0;
+
     this.paused = false;
     this.falling = false;
     this.velocity = 0.3;
@@ -27,7 +29,7 @@ Block.prototype.stop = function(){
 	   game.speed = 0;
 	   game.state = 'paused';
     }else{
-	   game.speed = 0.3;
+	   game.speed = 0.15;
 	   game.state = 'active';
     }
 }
@@ -61,4 +63,11 @@ Block.prototype.tint = function(){
     }else{
         
     }
+}
+
+Block.prototype.destroyIt = function(){
+    var holdcolor = this.color;
+
+    game.ctx.fillStyle = 'white';
+    game.ctx.fill();
 }

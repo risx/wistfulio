@@ -14,6 +14,9 @@
 	position: fixed;
 	left: 15%;
 }*/
+body {
+  height: 100%;
+}
 
 canvas {
   background-color: rgba(128, 128, 128, 0.5);
@@ -29,7 +32,9 @@ canvas {
 }
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {height: auto;}
+.row.content {
+  height: auto;
+}
 
 /* Set gray background color and 100% height */
 .sidenav {
@@ -51,5 +56,10 @@ footer {
     height: auto;
     padding: 15px;
   }
-  .row.content {height:auto;} 
+  .row.content {
+    height:auto;
+  } 
+  #game {
+    padding-left: 0;
+  }
 }

@@ -99,6 +99,7 @@ var findBlock = function(x, y){
 }
 
 var removeBlocks = function(blocks){
+
     function remove(block){
 		for(var i = 0; i < game.board.length; i++){
 		    if(game.board[i].posx == block.posx
@@ -106,11 +107,12 @@ var removeBlocks = function(blocks){
 				game.board.splice(i, 1);
 		    }
 		}
+		clearInterval(wait);
     }
 
     for(var i = 0; i < blocks.length; i++){
-    	var block = blocks[i];
-       	remove(block);
+		var block = blocks[i];
+   		var wait =	setInterval(remove(block), 2000);
     }
 
 }

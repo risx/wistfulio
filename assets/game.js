@@ -15,7 +15,7 @@ var Game = function(){
     this.board = [];
     this.selector = null;
     this.score = 0;
-    this.speed = 0.3;
+    this.speed = 0.15;
     this.time = 0;
     this.state = null;
     this.rowselection = 0;
@@ -33,7 +33,7 @@ Game.prototype.start = function(){
     this.board.length = 0;
     this.selector = 0;
     this.score = 0;
-    this.speed = 0.3;
+    this.speed = 0.15;
     this.time = 0;
     this.state = null;
     this.rowselection = 0;
@@ -184,8 +184,8 @@ Game.prototype.swap = function(){
 Game.prototype.moveDown = function(){
     for(var i = 0; i < this.board.length; i++){
     	if(this.board[i].falling == true && this.board[i].active == true){
-    	    this.board[i].y += this.blocksize;
-    	    this.board[i].posy += 1;
+            this.board[i].y += this.blocksize;
+            this.board[i].posy += 1;
     	}
     }
 }
@@ -210,7 +210,6 @@ Game.prototype.findMatch = function(){
             } else {
                 matching.push(firstBlock, rightBlock, leftBlock);
             }
-
         }
 
         var upBlock = findBlock(block.posx, block.posy - 1);
@@ -228,7 +227,6 @@ Game.prototype.findMatch = function(){
                 matching.push(firstBlock, upBlock, downBlock);
             }
         }
-
     }
 
     for(var i = 0; i < this.board.length; i++){
@@ -237,7 +235,7 @@ Game.prototype.findMatch = function(){
     	if(matching.length < 3){
     	   checkMatching(block);
     	   removeBlocks(matching);
-    	   this.score += matching.length * 100;	    
+    	   this.score += matching.length * 10;	    
         }    
     }
 }
@@ -271,13 +269,13 @@ Game.prototype.update = function(){
         }
 
         if(this.state == 'active'){
-        	this.score++;
         	this.selector.update();
         	this.findMatch();
-        	this.moveDown();
+            this.moveDown(); 
             this.fillBoard();
         	this.isOver();
         }
+        
 
         window.addEventListener('keydown', keyActions, true);
         
