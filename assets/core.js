@@ -29,13 +29,13 @@ var timer = function(){
 
     var now = Math.floor(Date.now() / 1000);
     var diff = now - game.startTime;
-    
+
     var minutes = Math.floor(diff / 60);
     var seconds = Math.floor(diff % 60);
     minutes = checkTime(minutes);
     seconds = checkTime(seconds);
 
-}
+};
 
 
 var loadImages = function(sources, callback){
@@ -53,7 +53,7 @@ var loadImages = function(sources, callback){
 		    }
 		}
     }
-}
+};
 
 var boardTop = function(){
 	var highestpoint = 20;
@@ -63,8 +63,8 @@ var boardTop = function(){
 			highestpoint = block.posy;
 		}
 	}
-	return highestpoint;	
-}
+	return highestpoint;
+};
 
 var boardBottom = function(){
 	var lowestpoint = 0;
@@ -76,7 +76,7 @@ var boardBottom = function(){
 		}
 	}
 	return lowestBlock;
-}
+};
 
 var isMatching = function(blockOne, blockTwo, blockColor){
 	if(blockTwo !== undefined && blockOne !== undefined
@@ -86,7 +86,21 @@ var isMatching = function(blockOne, blockTwo, blockColor){
 
 		return true;
 	}
-}
+};
+
+var searchMatching = function(col1, row1, col2, row2){
+	var block = findBlock(col1, row1);
+	var second_block = findBlock(col2, row2);
+
+	if(second_block !== undefined && block !== undefined
+	&& block.falling == false && second_block.falling == false
+	&& block.color == second_block.color
+	&& block.active == true && second_block.active == true
+  && block.matched == false && second_block.matched == false){
+		return true;
+	}
+
+};
 
 var findBlock = function(x, y){
     for(var i = 0; i < game.board.length; i++){
@@ -95,11 +109,9 @@ var findBlock = function(x, y){
 		    return game.board[i];
 		}
     }
+};
 
-}
-
-var removeBlocks = function(blocks){
-
+var removeBlocks = function(block){
     function remove(block){
 		for(var i = 0; i < game.board.length; i++){
 		    if(game.board[i].posx == block.posx
@@ -107,20 +119,22 @@ var removeBlocks = function(blocks){
 				game.board.splice(i, 1);
 		    }
 		}
-		clearInterval(wait);
+		//clearInterval(wait);
     }
 
-    for(var i = 0; i < blocks.length; i++){
-		var block = blocks[i];
-   		var wait =	setInterval(remove(block), 2000);
-    }
+    remove(block);
 
-}
+  //   for(var i = 0; i < blocks.length; i++){
+		// var block = blocks[i];
+   		// remove(block);
+    // }
+
+};
 
 var draw = function(object, type){
     if (type === 'block'){
 		// if(object.color == 'blue'){
-		//     this.ctx.drawImage(images.blueBlock, object.x, object.y, object.width, object.height);	    
+		//     this.ctx.drawImage(images.blueBlock, object.x, object.y, object.width, object.height);
 		// }
 		// if(object.color == 'green'){
 		//     this.ctx.drawImage(images.greenBlock, object.x, object.y, object.width, object.height);
@@ -147,11 +161,11 @@ var draw = function(object, type){
 	    this.ctx.closePath();
 
 	    // //debug info
-	    // this.ctx.fillStyle='white';
-	    // this.ctx.font='20px Oswald, sans-serif';
+	    this.ctx.fillStyle='white';
+	    this.ctx.font='20px Oswald, sans-serif';
 	    // this.ctx.fillText(object.posx, object.x + 5, object.y + 50);
 	    // this.ctx.fillText(object.posy, object.x + 25, object.y + 50);
-	    // this.ctx.fillText(object.color, object.x + 5, object.y + 30);
+	    this.ctx.fillText(object.matched, object.x + 25, object.y + 30);
 	    // //end debug info
     } else {
 	    this.ctx.beginPath();
@@ -160,15 +174,15 @@ var draw = function(object, type){
 	    this.ctx.rect(object.x, object.y, object.width, object.height);
 	    this.ctx.stroke();
 	    this.ctx.closePath();
-    }
-}
+    };
+};
 
 var keyActions = function(e){
 	if(e !== 37 || e !== 38 || e !== 39 || e !== 40
 		|| e !== 68 || e !== 83 || e !== 87 || e !== 16){
 		e.preventDefault();
 	}
-	// 37 - < // 87 - W // 38 - ^ // 83 - S// 39 - > 
+	// 37 - < // 87 - W // 38 - ^ // 83 - S// 39 - >
 	// 65 - A// 40 - V // 68 - D// 80 - P// 16 - Shift
     if(game.state == 'active'){
 		if(e.keyCode === 37){
@@ -187,10 +201,10 @@ var keyActions = function(e){
 		    game.swap();
 		}
 		if(e.keyCode === 16){
-		    game.speed = (game.speed == 0.3) ? 1 : 0.3;
+		    game.speed = (game.speed == 0.15) ? 1 : 0.15;
 		}
     }
     if(e.keyCode === 80 && game.state !== 'gameover'){
 		game.paused = game.pause();
-    }
-}
+    };
+};
