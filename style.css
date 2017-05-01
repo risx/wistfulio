@@ -1,65 +1,89 @@
-/*#game {
-  margin: 5px;
-  padding-top: 20px;
-  display: -webkit-flex;
-  display:         flex;
-  -webkit-align-items: center;
-          align-items: center;
-  -webkit-justify-content: center;
-          justify-content: center;
+body {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
 }
 
-#gameinfo {
-	padding-right: 100px;
-	position: fixed;
-	left: 15%;
-}*/
-body {
-  height: 100%;
+/*Navigation Bar*/
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+ul {
+	padding: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+	color: #d0021b;
+}
+
+.nav {
+	display: flex;
+	justify-content: center;
+}
+
+.nav li {
+	margin-right: 15px;
+}
+
+.active {
+	font-weight: bold;
+}
+
+/*Home Properties*/
+.home-container {
+	max-width: 1200px;
+	display: flex;
+	flex-direction: row wrap;
+	align-items: center;
+}
+
+@media all and (min-width: 800px) {
+  .game-conten     { flex: 3 0px; }
+  .left-content    { order: 1; } 
+  .game-content    { order: 2; }
+  .right-content   { order: 3; }
+
+}
+
+.left-content, .right-content, .game-content {
+	width: 100%;
+}
+
+.gameinfo {
+	padding-left: 25%;
+	padding-bottom: 25em;
 }
 
 canvas {
   background-color: rgba(128, 128, 128, 0.5);
 }
 
-#game {
-  padding-left: 25%;
+.createGameButton {
+	color: white;
+	background: black;
+	border: none;
+	font-size: 16px;
+	border-radius: 3px;
+	width: 200px;
+	text-align: center;
+	display: block;
+	padding: 7px 0;
+	margin: 10px auto;
 }
 
-.navbar {
-  margin-bottom: 0;
-  border-radius: 0;
+.button:hover:enabled {
+    background: linear-gradient(#1a1a1a, #0a0a0a);
+    color: #fff;
+    text-decoration: none;
 }
 
-/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {
-  height: auto;
+.button:active {
+    transform: translateY(1px);
 }
 
-/* Set gray background color and 100% height */
-.sidenav {
-  padding-top: 20px;
-  background-color: #f1f1f1;
-  height: 100%;
-}
 
-/* Set black background color, white text and some padding */
-footer {
-  background-color: #555;
-  color: white;
-  padding: 15px;
-}
-
-/* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-  .sidenav {
-    height: auto;
-    padding: 15px;
-  }
-  .row.content {
-    height:auto;
-  } 
-  #game {
-    padding-left: 0;
-  }
-}
