@@ -191,75 +191,69 @@ Game.prototype.moveDown = function(){
 Game.prototype.findMatch = function(){
   var yrows = boardBottom();
 
-  function setMatching(amount, direction, x, y){
-    if(direction == 'horiztonal'){
-      for(var i = x; i < x + amount; i++){
-        var block = findBlock(i, y);
-        block.matched = true;
-      }
+	function setMatchedHor(start, row, matching){
+		for(var i = start; i < start + matching; i++){
+			var block = findBlock(i, row);
+			block.matched = true;
+			this.numbermatched++;
+		}
+	};
+
+	function setMatchedVert(start, col, matching){
+    for(var i = start - matching; i < start; i++){
+      console.log(col, i, start, matching);
+      var block = findBlock(col, i);
+      block.matched = true;
+      this.numbermatched++;
     }
-    if (direction == 'vertical'){
-      for(var i = y; i < y + amount; i++){
-        var block = findBlock(x, i);
-        block.matched = true;
-      }
-    }
-  };
+	};
 
-  for(var i = 0; i < this.board.length; i++){
-    var matching = 1;
-    var block = this.board[i];
-    var initiailpos;
-		
-    //search horizontally
-    for(var x = block.posx; x < this.cols; x++){
-      if(searchMatching(x, block.posy, x + 1, block.posy)){
-          initiailpos = x - 1;
-          matching++;
-      }else{
-        if(matching >= 3){
-          this.numbermatched = matching;
-          setMatching(matching, 'horiztonal', initiailpos, block.posy);
-        }
-        matching = 1;
-        initiailpos;
-      }
-      if(matching > 3){
-        initiailpos--;
-        this.numbermatched = matching;
-        setMatching(matching, 'horiztonal', initiailpos, block.posy);
-      }
-    };
+	//search horizontally
+	for(var y = 0; y < yrows.posy; y++){
+		var matching = 1;
+		var startIndex = 0;
+		for(var x = 1; x < 6; x++){
+			var first_block = findBlock(x, y);
+			var second_block = findBlock(x - 1, y);
+			if(isMatching(first_block, second_block)){
+				matching++;
+			}else{
+				if(matching >= 3){
+					setMatchedHor(startIndex, y, matching);
+				}	
+				matching = 1;
+				startIndex++;
+			}
+		}	
+		if(matching >= 3){
+			setMatchedHor(startIndex, y, matching);
+		}		
+	};
 
-      //search vertically
-    for(var y = block.posy; y < yrows.posy; y++){
-      if(searchMatching(block.posx, y, block.posx, y + 1)){
-          initiailpos = y - 1;
-          matching++;
-      }else{
-        if(matching >= 3){
-          console.log(initiailpos);
-          this.numbermatched = matching;
-          setMatching(matching, 'vertical', block.posx, initiailpos);
-        }
-        matching = 1;
-        initiailpos;
-
-        }
-      }
-      if(matching > 3){
-        if(matching > 4){
-          console.log(initiailpos);
-          this.numbermatched = matching;
-          setMatching(matching, 'vertical', block.posx, initiailpos - 4);
-        }else {
-          console.log(initiailpos);
-          this.numbermatched = matching;
-          setMatching(matching, 'vertical', block.posx, initiailpos - 1);
-        }
-    }
-
-  }
+	//search vertically
+	for(var x = 0; x < 6; x++){
+		var matching = 1;
+		var startIndex = 0;
+		for(var y = 0; y < yrows.posy; y++){
+			var first_block = findBlock(x, y);
+			var second_block = findBlock(x, y - 1);
+      startIndex = y;
+			if(isMatching(first_block, second_block)){
+				matching++;
+			}else{
+				if(matching >= 3){
+					console.log('matching', matching, ' @', startIndex, 'to', x, y);
+					setMatchedVert(startIndex, x, matching);
+				}	
+				matching = 1;
+			}
+		}	
+		if(matching >= 3){
+				console.log('matching', matching, ' @', startIndex, 'to', x, y);
+				setMatchedVert(startIndex, x, matching);
+		}		
+	};
+ 
 };
 
 Game.prototype.destroyBlocks = function(){
@@ -296,7 +290,7 @@ Game.prototype.update = function(){
   if(this.state !== 'gameover'){
     var time = 0;
     for(var i = 0; i < this.board.length; i++){
-      this.board[i].update();
+      	this.board[i].update();
         this.board[i].isActive();
         this.board[i].isFalling();
     }
@@ -307,7 +301,7 @@ Game.prototype.update = function(){
         this.moveDown();
         this.fillBoard();
         this.findMatch();
-          this.isOver();
+        this.isOver();
     };
 
     window.addEventListener('keydown', keyActions, true);
