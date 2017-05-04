@@ -113,7 +113,21 @@ var findBlock = function(x, y){
   
 };
 
-var removeBlocks = function(block){
+var destroyBlocks = function(){
+	var yrows = boardBottom();
+	for(var y = 0; y < yrows.posy; y++){
+		for(var x = 0; x < 6; x++){
+			var block = findBlock(x,y);
+			if(block !== undefined && block.matched == true){
+				removeBlocks(block);
+			}
+		}
+	}
+};
+
+
+
+var removeBlocks = function(blocks){
 		function remove(block){
       for(var i = 0; i < game.board.length; i++){
           if(game.board[i].posx == block.posx
@@ -123,8 +137,7 @@ var removeBlocks = function(block){
       }
 		//clearInterval(wait);
 		}
-
-		remove(block);
+		remove(blocks);
 
 	//   for(var i = 0; i < blocks.length; i++){
 		// var block = blocks[i];
@@ -163,11 +176,11 @@ var draw = function(object, type){
 			this.ctx.closePath();
 
 			// //debug info
-			this.ctx.fillStyle='white';
-			this.ctx.font='20px Oswald, sans-serif';
-			// this.ctx.fillText(object.posx, object.x + 5, object.y + 50);
-			// this.ctx.fillText(object.posy, object.x + 25, object.y + 50);
-			this.ctx.fillText(object.matched, object.x + 25, object.y + 30);
+			// this.ctx.fillStyle='white';
+			// this.ctx.font='20px Oswald, sans-serif';
+			// // this.ctx.fillText(object.posx, object.x + 5, object.y + 50);
+			// // this.ctx.fillText(object.posy, object.x + 25, object.y + 50);
+			// this.ctx.fillText(object.falling, object.x + 25, object.y + 30);
 			// //end debug info
 		} else {
 			this.ctx.beginPath();

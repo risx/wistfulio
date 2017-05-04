@@ -169,11 +169,11 @@ Game.prototype.swap = function(){
   var firstBlock = findBlock(this.selector.posx, this.selector.posy);
   var secondBlock = findBlock(this.selector.posx + 1, this.selector.posy);
 
-  if(firstBlock !== undefined){
+  if(firstBlock !== undefined && firstBlock.matched === false){
     firstBlock.x += this.blocksize;
     firstBlock.posx += 1;
   }
-  if(secondBlock !== undefined){
+  if(secondBlock !== undefined && secondBlock.matched === false){
     secondBlock.x -= this.blocksize;
     secondBlock.posx -= 1;
   }
@@ -181,7 +181,8 @@ Game.prototype.swap = function(){
 
 Game.prototype.moveDown = function(){
   for(var i = 0; i < this.board.length; i++){
-    if(this.board[i].falling == true && this.board[i].active == true){
+    if(this.board[i].falling === true && this.board[i].active === true
+        && this.board[i].fallingcounter <= 0){
       this.board[i].y += this.blocksize;
       this.board[i].posy += 1;
     }
@@ -195,16 +196,17 @@ Game.prototype.findMatch = function(){
 		for(var i = start; i < start + matching; i++){
 			var block = findBlock(i, row);
 			block.matched = true;
-			this.numbermatched++;
+      block.destroycounter += 10;
+      game.numbermatched++;
 		}
 	};
 
 	function setMatchedVert(start, col, matching){
     for(var i = start - matching; i < start; i++){
-      console.log(col, i, start, matching);
       var block = findBlock(col, i);
       block.matched = true;
-      this.numbermatched++;
+      block.destroycounter += 10;
+      game.numbermatched++;
     }
 	};
 
@@ -242,28 +244,26 @@ Game.prototype.findMatch = function(){
 				matching++;
 			}else{
 				if(matching >= 3){
-					console.log('matching', matching, ' @', startIndex, 'to', x, y);
 					setMatchedVert(startIndex, x, matching);
-				}	
+				}
 				matching = 1;
 			}
-		}	
+		}
 		if(matching >= 3){
-				console.log('matching', matching, ' @', startIndex, 'to', x, y);
 				setMatchedVert(startIndex, x, matching);
-		}		
+		}
 	};
- 
 };
 
 Game.prototype.destroyBlocks = function(){
+  console.log(this.numbermatched);
   if(this.numbermatched >= 3){
     for(var i = 0; i < this.board.length; i++){
       if(this.board[i].matched == true){
         removeBlocks(this.board[i]);
+        this.numbermatched--;
       }
     }
-    this.numbermatched = 0;
   }
 };
 
@@ -293,6 +293,7 @@ Game.prototype.update = function(){
       	this.board[i].update();
         this.board[i].isActive();
         this.board[i].isFalling();
+        this.board[i].destroy();
     }
 
     if(this.state == 'active'){
@@ -302,6 +303,9 @@ Game.prototype.update = function(){
         this.fillBoard();
         this.findMatch();
         this.isOver();
+
+      document.getElementById('score').innerHTML = 'Score: ' + game.score;
+      document.getElementById('time').innerHTML = 'Time: ' + timer();
     };
 
     window.addEventListener('keydown', keyActions, true);
@@ -325,8 +329,7 @@ Game.prototype.update = function(){
     }, 1000/FPS);
   }
 
-  document.getElementById('score').innerHTML = 'Score: ' + game.score;
-  document.getElementById('time').innerHTML = 'Time: ' + timer();
+
 };
 
 Game.prototype.display = function(){
@@ -335,6 +338,7 @@ Game.prototype.display = function(){
 
     for(var i = 0; i < this.board.length; i++){
       if(this.board[i].y < 700){
+        this.board[i].countdown();
         draw(this.board[i], 'block');
       }
     }

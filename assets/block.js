@@ -10,9 +10,11 @@ var Block = function(){
 		this.posy = 0;
 
 		this.matched = false;
+		this.destroycounter = 100;
 		this.paniced = false;
 		this.paused = false;
 		this.falling = false;
+		this.fallingcounter = 0;
 		
 		this.velocity = 0.3;
 };
@@ -52,6 +54,21 @@ Block.prototype.isFalling = function(){
 		if(below === undefined){
 		 this.falling = true;
 		} else {
-		 this.falling = false;
-		};
+		 this.falling = false
+		}
+};
+
+Block.prototype.destroy = function(){
+	if(this.destroycounter <= 0){
+		removeBlocks(this);
+	};
+};
+
+Block.prototype.countdown = function(){
+	if(this.matched === true){
+		this.destroycounter--;
+	};
+	if(this.falling === true){
+		this.fallingcounter--;
+	};
 };
