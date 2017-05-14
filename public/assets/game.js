@@ -15,8 +15,10 @@ var Game = function(){
   this.board = [];
   this.selector = null;
   this.score = 0;
-  this.speed = 0.15;
+  this.speed = 1;
   this.time = 0;
+  this.globaltick = 0;
+  this.movetick = 0;
   this.state = null;
   this.rowselection = 0;
 
@@ -35,8 +37,8 @@ Game.prototype.start = function(){
   this.board.length = 0;
   this.selector = 0;
   this.score = 0;
-  this.speed = 0.15;
   this.time = 0;
+  this.globaltick = 0;
   this.state = null;
   this.rowselection = 0;
 
@@ -53,6 +55,7 @@ Game.prototype.start = function(){
       game.state = 'active';
       game.initSelector(1, 12);
       game.initBoard();
+      game.fillBoard();
       game.update();
       game.display();
       counter = 4;
@@ -86,6 +89,7 @@ Game.prototype.isOver = function(){
     }
   }
 };
+
 Game.prototype.initBoard = function(){
   var boardSetup = [
   [0,10,'red', 10 * 56],                                    [5,10,'purple', 10 * 56],
@@ -138,7 +142,7 @@ Game.prototype.createBlock = function(x, y, color, positiony){
   b.posx = x;
   b.posy = y;
 
-this.board.push(b);
+  this.board.push(b);
 };
 
 Game.prototype.move = function(direction){
@@ -169,11 +173,11 @@ Game.prototype.swap = function(){
   var firstBlock = findBlock(this.selector.posx, this.selector.posy);
   var secondBlock = findBlock(this.selector.posx + 1, this.selector.posy);
 
-  if(firstBlock !== undefined && firstBlock.matched === false){
+  if(firstBlock !== undefined){
     firstBlock.x += this.blocksize;
     firstBlock.posx += 1;
   }
-  if(secondBlock !== undefined && secondBlock.matched === false){
+  if(secondBlock !== undefined){
     secondBlock.x -= this.blocksize;
     secondBlock.posx -= 1;
   }
@@ -181,10 +185,10 @@ Game.prototype.swap = function(){
 
 Game.prototype.moveDown = function(){
   for(var i = 0; i < this.board.length; i++){
-    if(this.board[i].falling === true && this.board[i].active === true
-        && this.board[i].fallingcounter <= 0){
-      this.board[i].y += this.blocksize;
-      this.board[i].posy += 1;
+    if(this.board[i].falling === true && this.board[i].active === true){
+        this.board[i].y += this.blocksize;
+        this.board[i].posy += 1;
+      //}
     }
   }
 };
@@ -195,8 +199,8 @@ Game.prototype.findMatch = function(){
 	function setMatchedHor(start, row, matching){
 		for(var i = start; i < start + matching; i++){
 			var block = findBlock(i, row);
-			block.matched = true;
-      block.destroycounter += 10;
+      block.matchedindex++;
+      block.matched = true;
       game.numbermatched++;
 		}
 	};
@@ -204,8 +208,8 @@ Game.prototype.findMatch = function(){
 	function setMatchedVert(start, col, matching){
     for(var i = start - matching; i < start; i++){
       var block = findBlock(col, i);
+      block.matchedindex++;
       block.matched = true;
-      block.destroycounter += 10;
       game.numbermatched++;
     }
 	};
@@ -267,6 +271,19 @@ Game.prototype.destroyBlocks = function(){
   }
 };
 
+Game.prototype.shiftBlocksUp = function(){
+  for(var i = 0; i < this.board.length; i++){
+    if(this.board[i].y < 680 && this.board[i].active === false){
+      for(var i = 0; i < this.board.length; i++){
+        this.board[i].y -= 56;
+        this.board[i].posy -= 1;
+        
+      }
+      this.score += 50;
+    }
+  }
+};
+
 Game.prototype.gameend = function(){
   this.running = false;
   this.board.length = 0;
@@ -288,31 +305,39 @@ Game.prototype.pause = function(){
 
 Game.prototype.update = function(){
   if(this.state !== 'gameover'){
-    var time = 0;
-    for(var i = 0; i < this.board.length; i++){
-      	this.board[i].update();
-        this.board[i].isActive();
-        this.board[i].isFalling();
-        this.board[i].destroy();
-    }
 
     if(this.state == 'active'){
+      
+      this.globaltick++;
+      this.movetick++;
+      
+      if(this.globaltick >= 30){
         this.selector.update();
-        //this.destroyBlocks();
+        for(let i = 0; i < this.board.length; i++){   
+          this.board[i].update();
+        }
+        this.globaltick = 0;
+      };
+
+      if(this.movetick >= 15){
         this.moveDown();
-        this.fillBoard();
-        this.findMatch();
-        this.isOver();
+        this.movetick = 0;
+      }
+      
+      this.fillBoard();
+      this.findMatch();
+      this.isOver();
 
       document.getElementById('score').innerHTML = 'Score: ' + game.score;
       document.getElementById('time').innerHTML = 'Time: ' + timer();
     };
 
+
     window.addEventListener('keydown', keyActions, true);
 
   }
-  var self = this;
 
+  var self = this;
   if(this.state == 'gameover'){
     //stopeverything
     self.pause();
@@ -328,17 +353,18 @@ Game.prototype.update = function(){
         self.update();
     }, 1000/FPS);
   }
-
-
 };
 
 Game.prototype.display = function(){
   if(game.state == 'active'){
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    for(var i = 0; i < this.board.length; i++){
-      if(this.board[i].y < 700){
+    for(let i = 0; i < this.board.length; i++){
+        this.board[i].isActive();
+        this.board[i].destroy();
+        this.board[i].isFalling();
         this.board[i].countdown();
+      if(this.board[i].y < 700){
         draw(this.board[i], 'block');
       }
     }
@@ -346,7 +372,7 @@ Game.prototype.display = function(){
 
   }
   var self = this;
-  var maindisplay = requestAnimationFrame(function(){
+  requestAnimationFrame(function(){
     self.display();
   });
 };

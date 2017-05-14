@@ -24,7 +24,7 @@
 
 var timer = function(){
 		function checkTime(i){
-		return i = (i < 10) ? '0' + i : i;
+			return i = (i < 10) ? '0' + i : i;
 		}
 
 		var now = Math.floor(Date.now() / 1000);
@@ -35,6 +35,7 @@ var timer = function(){
 		minutes = checkTime(minutes);
 		seconds = checkTime(seconds);
 
+		return diff;
 };
 
 
@@ -49,7 +50,7 @@ var loadImages = function(sources, callback){
 		imgs[i].onload = function(){
 				loaded++;
 				if(loaded == nb){
-			callback(imgs);
+				callback(imgs);
 				}
 		}
 		}
@@ -113,19 +114,16 @@ var findBlock = function(x, y){
   
 };
 
-var destroyBlocks = function(){
-	var yrows = boardBottom();
-	for(var y = 0; y < yrows.posy; y++){
-		for(var x = 0; x < 6; x++){
-			var block = findBlock(x,y);
-			if(block !== undefined && block.matched == true){
-				removeBlocks(block);
+var fallBocks = function(){
+	for(var i = 0; i < game.board.length; i++){
+		if(game.board[i].matched === true){
+			var block = findBlock(game.board[i].posx, game.board[i].posy + 1);
+			if(block !== undefined){
+				block.preparefall = true;
 			}
 		}
 	}
 };
-
-
 
 var removeBlocks = function(blocks){
 		function remove(block){
@@ -135,15 +133,9 @@ var removeBlocks = function(blocks){
           game.board.splice(i, 1);
           }
       }
-		//clearInterval(wait);
 		}
 		remove(blocks);
-
-	//   for(var i = 0; i < blocks.length; i++){
-		// var block = blocks[i];
-	 		// remove(block);
-		// }
-
+		game.score += 10;
 };
 
 var draw = function(object, type){
@@ -199,9 +191,9 @@ var keyActions = function(e){
 	}
 	// 37 - < // 87 - W // 38 - ^ // 83 - S// 39 - >
 	// 65 - A// 40 - V // 68 - D// 80 - P// 16 - Shift
-		if(game.state == 'active'){
+	if(game.state == 'active'){
 		if(e.keyCode === 37){
-			 game.move('left');
+			game.move('left');
 		}
 		if(e.keyCode === 38){
 				game.move('up');
@@ -216,10 +208,10 @@ var keyActions = function(e){
 				game.swap();
 		}
 		if(e.keyCode === 16){
-				game.speed = (game.speed == 0.15) ? 1 : 0.15;
+				game.shiftBlocksUp();
 		}
-		}
-		if(e.keyCode === 80 && game.state !== 'gameover'){
+	}
+	if(e.keyCode === 80 && game.state !== 'gameover'){
 		game.paused = game.pause();
-		};
+	};
 };

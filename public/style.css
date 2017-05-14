@@ -55,8 +55,9 @@ a {
 }
 
 .gameinfo {
-	padding-left: 25%;
-	padding-bottom: 25em;
+	margin-left: 100px;
+	margin-bottom: 300px;
+	margin-right: 50px;
 }
 
 canvas {
