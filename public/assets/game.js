@@ -53,7 +53,7 @@ Game.prototype.start = function(){
     if(counter <= 0){
       clearInterval(countdown);
       game.state = 'active';
-      game.initSelector(1, 12);
+      game.initSelector(1, 10);
       game.initBoard();
       game.fillBoard();
       game.update();
@@ -188,7 +188,6 @@ Game.prototype.moveDown = function(){
     if(this.board[i].falling === true && this.board[i].active === true){
         this.board[i].y += this.blocksize;
         this.board[i].posy += 1;
-      //}
     }
   }
 };
@@ -274,12 +273,11 @@ Game.prototype.destroyBlocks = function(){
 Game.prototype.shiftBlocksUp = function(){
   for(var i = 0; i < this.board.length; i++){
     if(this.board[i].y < 680 && this.board[i].active === false){
-      for(var i = 0; i < this.board.length; i++){
-        this.board[i].y -= 56;
-        this.board[i].posy -= 1;
-        
+      for(var i = 0; i < this.board.length; i++){ 
+        this.board[i].y -= 5;
       }
-      this.score += 50;
+      this.selector.y -= 5;
+      this.score += 5;
     }
   }
 };

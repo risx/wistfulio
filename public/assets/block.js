@@ -12,7 +12,8 @@ var Block = function(){
 	this.matched = false;
 	
 	this.matchedindex = 0;
-	this.destroycounter = 200;
+	this.destroycounter = 205;
+	this.destroyframe = 10;
 
 	this.paniced = false;
 	this.paused = false;
@@ -33,7 +34,7 @@ Block.prototype.stop = function(){
 		 game.speed = 0;
 		 game.state = 'paused';
 		}else{
-		 game.speed = 0.15;
+		 game.speed = 1;
 		 game.state = 'active';
 		}
 };
@@ -73,10 +74,16 @@ Block.prototype.isFalling = function(){
 	this.prepareFloat();
 };
 
-
-
 Block.prototype.destroy = function(){
-	if(this.destroycounter < 0){
+	var previouscolor;
+	if(this.destroycounter % 2 === 0){
+		var previouscolor = this.color;
+		this.color = 'white';
+	}else{
+		this.color = (previouscolor === undefined) ? this.color : previouscolor;
+	}
+
+	if(this.destroycounter < 0 && this.destroyframe <= 0){
 		removeBlocks(this);
 	};
 };
@@ -85,7 +92,7 @@ Block.prototype.countdown = function(){
 	if(this.matched === true){
 		this.destroycounter--;
 	};
-	// if(this.falling === true){
-	// 	this.floatingcounter--;
-	// };
+	if(this.destroycounter <= 0){
+		this.destroyframe--;
+	}
 };
