@@ -12,8 +12,8 @@ var Block = function(){
 	this.matched = false;
 	
 	this.matchedindex = 0;
-	this.destroycounter = 205;
-	this.destroyframe = 10;
+	this.destroycounter = 60;
+	this.destroyframe = 40;
 
 	this.paniced = false;
 	this.paused = false;
@@ -75,14 +75,13 @@ Block.prototype.isFalling = function(){
 };
 
 Block.prototype.destroy = function(){
-	var previouscolor;
-	if(this.destroycounter % 2 === 0){
-		var previouscolor = this.color;
+	if(this.destroyframe < 40 && this.destroyframe >= 31){
 		this.color = 'white';
-	}else{
-		this.color = (previouscolor === undefined) ? this.color : previouscolor;
+	}else if (this.destroyframe <= 20 && this.destroyframe >= 11){
+		this.color = 'black';
+	}else if (this.destroyframe <= 11 && this.destroyframe >= 0){
+		this.color = 'white';
 	}
-
 	if(this.destroycounter < 0 && this.destroyframe <= 0){
 		removeBlocks(this);
 	};
