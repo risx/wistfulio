@@ -11,7 +11,7 @@ var Block = function(){
 
 	this.matched = false;
 	
-	this.matchedindex = 0;
+	// this.matchedindex = 0;
 	this.destroycounter = 60;
 	this.destroyframe = 40;
 

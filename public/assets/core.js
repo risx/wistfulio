@@ -35,7 +35,7 @@ var timer = function(){
 		minutes = checkTime(minutes);
 		seconds = checkTime(seconds);
 
-		return diff;
+		return "'" + minutes + '"'+ seconds;
 };
 
 
@@ -44,16 +44,33 @@ var loadImages = function(sources, callback){
 		var loaded = 0;
 		var imgs = {};
 		for(var i in sources){
-		nb++;
-		imgs[i] = new Image();
-		imgs[i].src = sources[i];
-		imgs[i].onload = function(){
-				loaded++;
-				if(loaded == nb){
-				callback(imgs);
-				}
+			nb++;
+			imgs[i] = new Image();
+			imgs[i].src = sources[i];
+			imgs[i].onload = function(){
+					loaded++;
+					if(loaded == nb){
+					callback(imgs);
+					}
+			}
 		}
+};
+
+var loadSounds = function(sources, callback){
+	var nb = 0;
+	var loaded = 0;
+	var snds = {};
+	for(var i in sources){
+		nb++
+		snds[i] = new Audio();
+		snds.src = sources[i];
+		snds[i].onload = function(){
+			loaded++;
+			if(loaded == nb){
+				callback(snds);
+			}
 		}
+	}
 };
 
 var boardTop = function(){

@@ -2,6 +2,7 @@ var game;
 var FPS = 60;
 
 var images = {};
+var sounds = {};
 
 var speed = function(fps){
   FPS = parseInt(fps);
@@ -15,7 +16,7 @@ var Game = function(){
   this.board = [];
   this.selector = null;
   this.score = 0;
-  this.speed = 1;
+  this.speed = 3;
   this.time = 0;
   this.globaltick = 0;
   this.movetick = 0;
@@ -198,7 +199,7 @@ Game.prototype.findMatch = function(){
 	function setMatchedHor(start, row, matching){
 		for(var i = start; i < start + matching; i++){
 			var block = findBlock(i, row);
-      block.matchedindex++;
+      //block.matchedindex++;
       block.matched = true;
       game.numbermatched++;
 		}
@@ -271,12 +272,14 @@ Game.prototype.destroyBlocks = function(){
 };
 
 Game.prototype.shiftBlocksUp = function(){
+  var inc = 5;
   for(var i = 0; i < this.board.length; i++){
     if(this.board[i].y < 680 && this.board[i].active === false){
-      for(var i = 0; i < this.board.length; i++){ 
-        this.board[i].y -= 5;
+      for(var i = 0; i < this.board.length; i++){
+        
+        this.board[i].y -= inc;
       }
-      this.selector.y -= 5;
+      this.selector.y -= inc;
       this.score += 5;
     }
   }
@@ -387,10 +390,17 @@ window.onload = function(){
     yellowBlock:'./assets/images/yellowblock.png'
   }
 
+  var sounds = {
+    move:'./assets/sounds/move.wav'
+  }
+
+  loadSounds(sounds, function(snds){
+    sounds = snds;
+  });
   loadImages(sprites, function(imgs){
     images = imgs;
     game = new Game();
-  })
+  });
 
 };
 
