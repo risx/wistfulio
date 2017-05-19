@@ -17,6 +17,8 @@ var Block = function(){
 
 	this.paniced = false;
 	this.paused = false;
+
+	this.floating = false;
 	this.falling = false;
 	this.floatingcounter = 50;
 	
@@ -56,22 +58,33 @@ Block.prototype.isActive = function(){
 Block.prototype.prepareFloat = function(){
 	var below = findBlock(this.posx, this.posy + 1);
 
-	if(below !== undefined && this.active === true &&
-		below.falling === true){
-			this.falling = true;
-		}
+	if(below === undefined || below.floating === true && this.active === true){
+		this.floating = true;
+	}else {
+		this.floating = false;
+	}
+
 };
 
-Block.prototype.isFalling = function(){
-	var below = findBlock(this.posx, this.posy + 1);
 
-	if(below === undefined){
+// Block.prototype.isFalling = function(){
+// 	var below = findBlock(this.posx, this.posy + 1);
+
+// 	if(below === undefined){
+// 		this.falling = true;
+// 	}else{
+// 		//this.floatingcounter = 50;
+// 		this.falling = false;			
+// 	}
+	
+// };
+
+Block.prototype.isFalling = function(){
+	if(this.floating === true && this.active === true){
 		this.falling = true;
 	}else{
-		//this.floatingcounter = 50;
-		this.falling = false;			
+		this.falling = false;
 	}
-	this.prepareFloat();
 };
 
 Block.prototype.destroy = function(){

@@ -188,8 +188,8 @@ var draw = function(object, type){
 			// this.ctx.fillStyle='white';
 			// this.ctx.font='20px Oswald, sans-serif';
 			// // this.ctx.fillText(object.posx, object.x + 5, object.y + 50);
-			// // this.ctx.fillText(object.posy, object.x + 25, object.y + 50);
-			// this.ctx.fillText(object.falling, object.x + 25, object.y + 30);
+			// this.ctx.fillText(object.falling, object.x + 25, object.y + 50);
+			// this.ctx.fillText(object.floating, object.x + 25, object.y + 30);
 			// //end debug info
 		} else {
 			this.ctx.beginPath();

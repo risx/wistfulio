@@ -186,9 +186,12 @@ Game.prototype.swap = function(){
 
 Game.prototype.moveDown = function(){
   for(var i = 0; i < this.board.length; i++){
-    if(this.board[i].falling === true && this.board[i].active === true){
-        this.board[i].y += this.blocksize;
-        this.board[i].posy += 1;
+    if(this.board[i].falling === true && this.board[i].floating === true && this.board[i].active === true){
+        var below = findBlock(this.board[i].posx,this.board[i].posy + 1);
+        if(below === undefined){
+          this.board[i].y += this.blocksize;
+          this.board[i].posy += 1;
+        }
     }
   }
 };
@@ -320,11 +323,15 @@ Game.prototype.update = function(){
         this.globaltick = 0;
       };
 
-      if(this.movetick >= 15){
-        this.moveDown();
+      if(this.movetick >= 30){
+        for(let i = 0; i < this.board.length; i++){
+          this.board[i].isFalling();
+          this.board[i].prepareFloat();
+        }
         this.movetick = 0;
       }
-      
+
+      this.moveDown();
       this.fillBoard();
       this.findMatch();
       this.isOver();
@@ -332,8 +339,6 @@ Game.prototype.update = function(){
       document.getElementById('score').innerHTML = 'Score: ' + game.score;
       document.getElementById('time').innerHTML = 'Time: ' + timer();
     };
-
-
     window.addEventListener('keydown', keyActions, true);
 
   }
@@ -363,7 +368,7 @@ Game.prototype.display = function(){
     for(let i = 0; i < this.board.length; i++){
         this.board[i].isActive();
         this.board[i].destroy();
-        this.board[i].isFalling();
+        this.board[i].prepareFloat();
         this.board[i].countdown();
       if(this.board[i].y < 700){
         draw(this.board[i], 'block');
