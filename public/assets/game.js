@@ -231,7 +231,8 @@ Game.prototype.findMatch = function(){
 					setMatchedHor(startIndex, y, matching);
 				}	
 				matching = 1;
-				startIndex++;
+				//startIndex++;
+        startIndex = x;
 			}
 		}	
 		if(matching >= 3){
@@ -313,7 +314,6 @@ Game.prototype.update = function(){
     if(this.state == 'active'){
       
       this.globaltick++;
-      this.movetick++;
       
       if(this.globaltick >= 30){
         this.selector.update();
@@ -322,18 +322,12 @@ Game.prototype.update = function(){
         }
         this.globaltick = 0;
       };
-
-      if(this.movetick >= 30){
-        for(let i = 0; i < this.board.length; i++){
-          this.board[i].isFalling();
-          this.board[i].prepareFloat();
-        }
-        this.movetick = 0;
-      }
+      if(this.globaltick >= 10){
+        this.findMatch();
+      };
 
       this.moveDown();
       this.fillBoard();
-      this.findMatch();
       this.isOver();
 
       document.getElementById('score').innerHTML = 'Score: ' + game.score;
@@ -370,6 +364,8 @@ Game.prototype.display = function(){
         this.board[i].destroy();
         this.board[i].prepareFloat();
         this.board[i].countdown();
+        this.board[i].isFalling();
+        this.board[i].prepareFloat();
       if(this.board[i].y < 700){
         draw(this.board[i], 'block');
       }

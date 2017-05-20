@@ -98,10 +98,11 @@ var boardBottom = function(){
 
 var isMatching = function(blockOne, blockTwo){
 	if(blockTwo !== undefined && blockOne !== undefined
-		&& blockOne.falling == false && blockTwo.falling == false
-		&& blockOne.color == blockTwo.color
-		&& blockOne.active == true && blockTwo.active == true
-		&& blockOne.matched == false && blockTwo.matched == false){
+		&& blockOne.falling === false && blockTwo.falling === false
+		&& blockOne.floating === false && blockTwo.floating === false
+		&& blockOne.color === blockTwo.color
+		&& blockOne.active === true && blockTwo.active === true
+		/*&& blockOne.matched === false && blockTwo.matched === false*/){
 
 		return true;
 	}

@@ -62,6 +62,7 @@ Block.prototype.prepareFloat = function(){
 		this.floating = true;
 	}else {
 		this.floating = false;
+		this.floatingcounter = 50;
 	}
 
 };
@@ -80,7 +81,8 @@ Block.prototype.prepareFloat = function(){
 // };
 
 Block.prototype.isFalling = function(){
-	if(this.floating === true && this.active === true){
+	if(this.floating === true && this.active === true
+			&& this.floatingcounter <= 0){
 		this.falling = true;
 	}else{
 		this.falling = false;
@@ -106,5 +108,8 @@ Block.prototype.countdown = function(){
 	};
 	if(this.destroycounter <= 0){
 		this.destroyframe--;
+	}
+	if(this.floating === true){
+		this.floatingcounter--;
 	}
 };
