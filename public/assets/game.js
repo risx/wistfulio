@@ -19,7 +19,7 @@ var Game = function(){
   this.speed = 3;
   this.time = 0;
   this.globaltick = 0;
-  this.movetick = 0;
+  this.findtick = 0;
   this.state = null;
   this.rowselection = 0;
 
@@ -279,8 +279,7 @@ Game.prototype.shiftBlocksUp = function(){
   var inc = 5;
   for(var i = 0; i < this.board.length; i++){
     if(this.board[i].y < 680 && this.board[i].active === false){
-      for(var i = 0; i < this.board.length; i++){
-        
+      for(var i = 0; i < this.board.length; i++){  
         this.board[i].y -= inc;
       }
       this.selector.y -= inc;
@@ -309,29 +308,32 @@ Game.prototype.pause = function(){
 };
 
 Game.prototype.update = function(){
-  if(this.state !== 'gameover'){
+    if(this.state !== 'gameover'){
 
     if(this.state == 'active'){
-      
+
       this.globaltick++;
-      
-      if(this.globaltick >= 30){
+      this.findtick++;
+
+      if(this.globaltick >= 35){
         this.selector.update();
-        for(let i = 0; i < this.board.length; i++){   
+        for(var i = 0; i < this.board.length; i++){   
           this.board[i].update();
         }
         this.globaltick = 0;
       };
-      if(this.globaltick >= 10){
+
+      if(this.findtick >= 20){
         this.findMatch();
+        this.findtick = 0;
       };
 
       this.moveDown();
       this.fillBoard();
       this.isOver();
 
-      document.getElementById('score').innerHTML = 'Score: ' + game.score;
-      document.getElementById('time').innerHTML = 'Time: ' + timer();
+      // document.getElementById('score').innerHTML = 'Score: ' + game.score;
+      // document.getElementById('time').innerHTML = 'Time: ' + timer();
     };
     window.addEventListener('keydown', keyActions, true);
 
@@ -350,22 +352,23 @@ Game.prototype.update = function(){
     });
   }else{
     setTimeout(function(){
+
         self.update();
     }, 1000/FPS);
   }
 };
 
 Game.prototype.display = function(){
+
   if(game.state == 'active'){
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    for(let i = 0; i < this.board.length; i++){
+    for(var i = 0; i < this.board.length; i++){
         this.board[i].isActive();
         this.board[i].destroy();
         this.board[i].prepareFloat();
         this.board[i].countdown();
         this.board[i].isFalling();
-        this.board[i].prepareFloat();
       if(this.board[i].y < 700){
         draw(this.board[i], 'block');
       }

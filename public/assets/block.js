@@ -12,7 +12,8 @@ var Block = function(){
 	this.matched = false;
 	
 	// this.matchedindex = 0;
-	this.destroycounter = 60;
+	
+	this.destroycounter = 50;
 	this.destroyframe = 40;
 
 	this.paniced = false;
@@ -20,7 +21,9 @@ var Block = function(){
 
 	this.floating = false;
 	this.falling = false;
-	this.floatingcounter = 50;
+	
+	this.floattime = 20;
+	this.floatingcounter = this.floattime;
 	
 	this.velocity = 0.3;
 };
@@ -62,23 +65,10 @@ Block.prototype.prepareFloat = function(){
 		this.floating = true;
 	}else {
 		this.floating = false;
-		this.floatingcounter = 50;
+		this.floatingcounter = this.floattime;
 	}
 
 };
-
-
-// Block.prototype.isFalling = function(){
-// 	var below = findBlock(this.posx, this.posy + 1);
-
-// 	if(below === undefined){
-// 		this.falling = true;
-// 	}else{
-// 		//this.floatingcounter = 50;
-// 		this.falling = false;			
-// 	}
-	
-// };
 
 Block.prototype.isFalling = function(){
 	if(this.floating === true && this.active === true
@@ -90,14 +80,19 @@ Block.prototype.isFalling = function(){
 };
 
 Block.prototype.destroy = function(){
-	if(this.destroyframe < 40 && this.destroyframe >= 31){
-		this.color = 'white';
-	}else if (this.destroyframe <= 20 && this.destroyframe >= 11){
+	if(this.destroycounter <= 45 && this.destroycounter >= 39){
 		this.color = 'black';
-	}else if (this.destroyframe <= 11 && this.destroyframe >= 0){
+	}else if(this.destroycounter <= 38 && this.destroycounter >= 28){
 		this.color = 'white';
+	}else if(this.destroycounter <= 27 && this.destroycounter >= 16){
+		this.color = 'black';
+	}else if(this.destroycounter < 15 && this.destroycounter >= 9){
+		this.color = 'white';
+	}else if(this.destroycounter < 8){
+		this.color = 'black';
 	}
-	if(this.destroycounter < 0 && this.destroyframe <= 0){
+
+	if(this.destroyframe <= 0){
 		removeBlocks(this);
 	};
 };
@@ -108,8 +103,8 @@ Block.prototype.countdown = function(){
 	};
 	if(this.destroycounter <= 0){
 		this.destroyframe--;
-	}
+	};
 	if(this.floating === true){
 		this.floatingcounter--;
-	}
+	};
 };

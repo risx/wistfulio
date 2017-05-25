@@ -22,6 +22,31 @@
 	 window.setZeroTimeout = setZeroTimeout;
 })();
 
+(function() {
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+                                   || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+ 
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+              timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+ 
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+}());
+
 var timer = function(){
 		function checkTime(i){
 			return i = (i < 10) ? '0' + i : i;
@@ -108,20 +133,6 @@ var isMatching = function(blockOne, blockTwo){
 	}
 };
 
-var searchMatching = function(col1, row1, col2, row2){
-	var block = findBlock(col1, row1);
-	var second_block = findBlock(col2, row2);
-
-	if(second_block !== undefined && block !== undefined
-		&& block.falling == false && second_block.falling == false
-		&& block.color == second_block.color
-		&& block.active == true && second_block.active == true
-			&& block.matched == false && second_block.matched == false){
-		return true;
-	}
-
-};
-
 var findBlock = function(x, y){
   for(var i = 0; i < game.board.length; i++){
     if(game.board[i].posx === x
@@ -130,17 +141,6 @@ var findBlock = function(x, y){
     }
   }
   
-};
-
-var fallBocks = function(){
-	for(var i = 0; i < game.board.length; i++){
-		if(game.board[i].matched === true){
-			var block = findBlock(game.board[i].posx, game.board[i].posy + 1);
-			if(block !== undefined){
-				block.preparefall = true;
-			}
-		}
-	}
 };
 
 var removeBlocks = function(blocks){
