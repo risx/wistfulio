@@ -71,8 +71,7 @@ Block.prototype.prepareFloat = function(){
 };
 
 Block.prototype.isFalling = function(){
-	if(this.floating === true && this.active === true
-			&& this.floatingcounter <= 0){
+	if(this.floating === true && this.active === true	&& this.floatingcounter <= 0){
 		this.falling = true;
 	}else{
 		this.falling = false;

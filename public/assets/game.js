@@ -174,13 +174,26 @@ Game.prototype.swap = function(){
   var firstBlock = findBlock(this.selector.posx, this.selector.posy);
   var secondBlock = findBlock(this.selector.posx + 1, this.selector.posy);
 
-  if(firstBlock !== undefined){
+  if(firstBlock !== undefined && secondBlock !== undefined
+    && firstBlock.matched === false && firstBlock.falling === false && firstBlock.floating === false
+    && secondBlock.matched === false && secondBlock.falling === false && secondBlock.floating === false){
     firstBlock.x += this.blocksize;
     firstBlock.posx += 1;
-  }
-  if(secondBlock !== undefined){
     secondBlock.x -= this.blocksize;
     secondBlock.posx -= 1;
+  } else 
+  if(secondBlock !== undefined && secondBlock.matched === false 
+     && secondBlock.falling === false && secondBlock.floating === false
+     && firstBlock === undefined){
+
+    secondBlock.x -= this.blocksize;
+    secondBlock.posx -= 1;
+  } else 
+  if(firstBlock !== undefined && firstBlock.matched === false 
+      && firstBlock.falling === false && firstBlock.floating === false
+      && secondBlock === undefined){
+    firstBlock.x += this.blocksize;
+    firstBlock.posx += 1;
   }
 };
 
