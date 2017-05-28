@@ -51,16 +51,12 @@ var timer = function(){
 		function checkTime(i){
 			return i = (i < 10) ? '0' + i : i;
 		}
+		var counter = 0;
 
-		var now = Math.floor(Date.now() / 1000);
-		var diff = now - game.startTime;
+		var tick = (function(){
+			return counter++;
+		});
 
-		var minutes = Math.floor(diff / 60);
-		var seconds = Math.floor(diff % 60);
-		minutes = checkTime(minutes);
-		seconds = checkTime(seconds);
-
-		return "'" + minutes + '"'+ seconds;
 };
 
 

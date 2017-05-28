@@ -7,7 +7,7 @@ const app = express();
 // const server = require('http').createServer(app);
 // const socket = io.listen(server);
 
-const port = 8080;
+const port = 3000;
 
 // let users = 0;
 

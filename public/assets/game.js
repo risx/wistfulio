@@ -185,7 +185,6 @@ Game.prototype.swap = function(){
   if(secondBlock !== undefined && secondBlock.matched === false 
      && secondBlock.falling === false && secondBlock.floating === false
      && firstBlock === undefined){
-
     secondBlock.x -= this.blocksize;
     secondBlock.posx -= 1;
   } else 
@@ -345,8 +344,8 @@ Game.prototype.update = function(){
       this.fillBoard();
       this.isOver();
 
-      // document.getElementById('score').innerHTML = 'Score: ' + game.score;
-      // document.getElementById('time').innerHTML = 'Time: ' + timer();
+      document.getElementById('score').innerHTML = 'Score: ' + game.score;
+      document.getElementById('time').innerHTML = 'Time: ' + timer();
     };
     window.addEventListener('keydown', keyActions, true);
 
