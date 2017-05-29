@@ -62,7 +62,7 @@ Game.prototype.start = function(){
       counter = 4;
     }else{
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      this.ctx.strokeStyle = 'white';
+      this.ctx.fillStyle = 'white';
       this.ctx.textAlign = 'center';
       this.ctx.font = '100px Arial';
       this.ctx.fillText(counter, game.canvas.width / 2, game.canvas.height / 2);
@@ -112,26 +112,48 @@ Game.prototype.fillBoard = function(){
   }
 };
 
+// Game.prototype.createRow = function(y, positiony){
+//   function selectColor(selectRow){
+//     rowpatterns = [
+//         ['red','blue','yellow','green','red','red'],
+//         ['blue','yellow','yellow','red','green','purple'],
+//         ['yellow','red','red','green','yellow','purple']
+//     ];
+//     return rowpatterns[selectRow];
+//   }
+
+//   if(selectColor(this.rowselection) === undefined){
+//     this.rowselection = 0;
+//   }
+
+//   var row = selectColor(this.rowselection);
+
+//   this.rowselection++;
+
+//   for(var x = 0; x < this.cols; x++){
+//     this.createBlock(x, y, row[x], positiony);
+//   }
+// };
+
 Game.prototype.createRow = function(y, positiony){
-  function selectColor(selectRow){
-    rowpatterns = [
-        ['red','blue','yellow','green','red','red'],
-        ['blue','yellow','yellow','red','green','purple'],
-        ['yellow','red','red','green','yellow','purple']
-    ];
-    return rowpatterns[selectRow];
-  }
-
-  if(selectColor(this.rowselection) === undefined){
-    this.rowselection = 0;
-  }
-
-  var row = selectColor(this.rowselection);
-
-  this.rowselection++;
+  var colors = ['red', 'blue', 'yellow', 'green', 'purple', 'green'];
 
   for(var x = 0; x < this.cols; x++){
-    this.createBlock(x, y, row[x], positiony);
+    var rnd = Math.floor((Math.random() * 5));
+    var checkabove = findBlock(x, y - 1);
+    var checkrightone = findBlock(x - 1, y);
+    var checkrighttwo = findBlock(x - 2, y);
+    if(checkrightone !== undefined && checkrighttwo !== undefined){
+      if(colors[rnd] === checkrightone.color && colors[rnd] === checkrighttwo.color){
+        var rnd = Math.floor((Math.random() * 5));
+      }
+    }
+    if(checkabove !== undefined){
+      if(checkabove.color === colors[rnd]){
+        var rnd = Math.floor((Math.random() * 5));
+      }
+    }
+    this.createBlock(x, y, colors[rnd], positiony);
   }
 };
 
@@ -306,7 +328,8 @@ Game.prototype.gameend = function(){
   this.selector = null;
 
   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  this.ctx.strokeStyle = 'white';
+  
+  this.ctx.fillStyle = 'white';
   this.ctx.textAlign = 'center';
   this.ctx.font = '30px Arial';
   this.ctx.fillText('GAME OVER', game.canvas.width / 2, game.canvas.height / 2);
