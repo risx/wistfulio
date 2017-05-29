@@ -51,12 +51,16 @@ var timer = function(){
 		function checkTime(i){
 			return i = (i < 10) ? '0' + i : i;
 		}
-		var counter = 0;
-
 		var tick = (function(){
-			return counter++;
-		});
+			var counter = 0;
+			return function(){
+				 counter++;
+			}
+		})();
 
+		if(game.state === 'active'){
+			return tick();
+		}
 };
 
 

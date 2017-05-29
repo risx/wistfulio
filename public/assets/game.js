@@ -93,7 +93,7 @@ Game.prototype.isOver = function(){
 
 Game.prototype.initBoard = function(){
   var boardSetup = [
-  [0,10,'red', 10 * 56],                                    [5,10,'purple', 10 * 56],
+  [0,10,'red', 10 * 56],                                             [5,10,'purple', 10 * 56],
   [0,11,'red', 11 * 56],[1,11,'blue', 11 * 56],[2,11,'red', 11 * 56],[4,11,'red', 11 * 56],[5,11,'red', 11 * 56]
   ];
 
