@@ -62,7 +62,7 @@ Game.prototype.start = function(){
       counter = 4;
     }else{
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      this.ctx.fillStyle = 'white';
+      this.ctx.fillStyle = 'black';
       this.ctx.textAlign = 'center';
       this.ctx.font = '100px Arial';
       this.ctx.fillText(counter, game.canvas.width / 2, game.canvas.height / 2);
