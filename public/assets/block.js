@@ -10,8 +10,7 @@ var Block = function(){
 	this.posy = 0;
 
 	this.matched = false;
-	
-	// this.matchedindex = 0;
+	this.matchedindex = 0;
 	
 	this.destroycounter = 50;
 	this.destroyframe = 40;
@@ -79,18 +78,15 @@ Block.prototype.isFalling = function(){
 };
 
 Block.prototype.destroy = function(){
-	if(this.destroycounter <= 45 && this.destroycounter >= 39){
+	if(this.destroycounter <= 45 && this.destroycounter >= 39
+		|| this.destroycounter <= 27 && this.destroycounter >= 16
+		|| this.destroycounter <= 8 && this.destroycounter > 3){
 		this.color = 'black';
-	}else if(this.destroycounter <= 38 && this.destroycounter >= 28){
+	}else if(this.destroycounter <= 38 && this.destroycounter >= 28
+		|| this.destroycounter < 15 && this.destroycounter >= 9
+		|| this.destroycounter <= 3){
 		this.color = 'white';
-	}else if(this.destroycounter <= 27 && this.destroycounter >= 16){
-		this.color = 'black';
-	}else if(this.destroycounter < 15 && this.destroycounter >= 9){
-		this.color = 'white';
-	}else if(this.destroycounter < 8){
-		this.color = 'black';
 	}
-
 	if(this.destroyframe <= 0){
 		removeBlocks(this);
 	};

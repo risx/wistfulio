@@ -146,8 +146,8 @@ var findBlock = function(x, y){
 var removeBlocks = function(blocks){
 		function remove(block){
       for(var i = 0; i < game.board.length; i++){
-          if(game.board[i].posx == block.posx
-          && game.board[i].posy == block.posy){
+          if(game.board[i].posx === block.posx
+          && game.board[i].posy === block.posy){
           game.board.splice(i, 1);
           }
       }
@@ -209,7 +209,7 @@ var keyActions = function(e){
 	}
 	// 37 - < // 87 - W // 38 - ^ // 83 - S// 39 - >
 	// 65 - A// 40 - V // 68 - D// 80 - P// 16 - Shift
-	if(game.state == 'active'){
+	if(game.state === 'active'){
 		if(e.keyCode === 37){
 			game.move('left');
 		}

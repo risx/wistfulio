@@ -93,13 +93,13 @@ Game.prototype.isOver = function(){
 
 Game.prototype.initBoard = function(){
   var boardSetup = [
-  [0,10,'red', 10 * 56],                                             [5,10,'purple', 10 * 56],
-  [0,11,'red', 11 * 56],[1,11,'blue', 11 * 56],[2,11,'red', 11 * 56],[4,11,'red', 11 * 56],[5,11,'red', 11 * 56]
+  [0,9,'purple', 9 * 56],
+  [0,10,'green', 10 * 56],[0,10,'red', 10 * 56],                                             [5,10,'purple', 10 * 56],
+  [0,11,'red', 11 * 56],[1,11,'blue', 11 * 56],[2,11,'red', 11 * 56],[4,11,'blue', 11 * 56],[5,11,'red', 11 * 56]
   ];
 
-  var self = this;
   for(var x = 0; x < boardSetup.length; x++){
-      self.createBlock(boardSetup[x][0], boardSetup[x][1], boardSetup[x][2], boardSetup[x][3]);
+      this.createBlock(boardSetup[x][0], boardSetup[x][1], boardSetup[x][2], boardSetup[x][3]);
   }
 };
 
@@ -111,29 +111,6 @@ Game.prototype.fillBoard = function(){
     self.createRow(bottomRow.posy + 1, bottomRow.y + 56);
   }
 };
-
-// Game.prototype.createRow = function(y, positiony){
-//   function selectColor(selectRow){
-//     rowpatterns = [
-//         ['red','blue','yellow','green','red','red'],
-//         ['blue','yellow','yellow','red','green','purple'],
-//         ['yellow','red','red','green','yellow','purple']
-//     ];
-//     return rowpatterns[selectRow];
-//   }
-
-//   if(selectColor(this.rowselection) === undefined){
-//     this.rowselection = 0;
-//   }
-
-//   var row = selectColor(this.rowselection);
-
-//   this.rowselection++;
-
-//   for(var x = 0; x < this.cols; x++){
-//     this.createBlock(x, y, row[x], positiony);
-//   }
-// };
 
 Game.prototype.createRow = function(y, positiony){
   var colors = ['red', 'blue', 'yellow', 'green', 'purple', 'green'];
@@ -169,6 +146,7 @@ Game.prototype.createBlock = function(x, y, color, positiony){
 };
 
 Game.prototype.move = function(direction){
+  sounds.play();
   var previousposx = this.selector.posx;
   var previcousposy = this.selector.posy;
 
@@ -236,7 +214,7 @@ Game.prototype.findMatch = function(){
 	function setMatchedHor(start, row, matching){
 		for(var i = start; i < start + matching; i++){
 			var block = findBlock(i, row);
-      //block.matchedindex++;
+      block.matchedindex++;
       block.matched = true;
       game.numbermatched++;
 		}
@@ -428,14 +406,7 @@ window.onload = function(){
     redBlock:'./assets/images/redblock.png',
     yellowBlock:'./assets/images/yellowblock.png'
   }
-
-  var sounds = {
-    move:'./assets/sounds/move.wav'
-  }
-
-  loadSounds(sounds, function(snds){
-    sounds = snds;
-  });
+  sounds = new Audio('./assets/sounds/move.wav');
   loadImages(sprites, function(imgs){
     images = imgs;
     game = new Game();
