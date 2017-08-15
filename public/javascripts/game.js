@@ -2,7 +2,7 @@ var game;
 var FPS = 60;
 
 var images = {};
-var sounds = {};
+var audio = {};
 
 var speed = function(fps){
   FPS = parseInt(fps);
@@ -22,6 +22,9 @@ var Game = function(){
   this.findtick = 0;
   this.state = null;
   this.rowselection = 0;
+
+  this.combo = 0;
+  this.combotime = 0;
 
   this.numbermatched = 0;
 
@@ -146,7 +149,7 @@ Game.prototype.createBlock = function(x, y, color, positiony){
 };
 
 Game.prototype.move = function(direction){
-  sounds.play();
+  //sounds.play();
   var previousposx = this.selector.posx;
   var previcousposy = this.selector.posy;
 
@@ -198,7 +201,9 @@ Game.prototype.swap = function(){
 
 Game.prototype.moveDown = function(){
   for(var i = 0; i < this.board.length; i++){
-    if(this.board[i].falling === true && this.board[i].floating === true && this.board[i].active === true){
+    if(this.board[i].falling === true && this.board[i].floating === true 
+        && this.board[i].active === true){
+
         var below = findBlock(this.board[i].posx,this.board[i].posy + 1);
         if(below === undefined){
           this.board[i].y += this.blocksize;
@@ -218,6 +223,7 @@ Game.prototype.findMatch = function(){
       block.matched = true;
       game.numbermatched++;
 		}
+    game.combo++;
 	};
 
 	function setMatchedVert(start, col, matching){
@@ -227,6 +233,7 @@ Game.prototype.findMatch = function(){
       block.matched = true;
       game.numbermatched++;
     }
+    game.combo++;
 	};
 
 	//search horizontally
@@ -240,18 +247,16 @@ Game.prototype.findMatch = function(){
 				matching++;
 			}else{
 				if(matching >= 3){
-					setMatchedHor(startIndex, y, matching);
-				}	
+          setMatchedHor(startIndex, y, matching)
+				}
 				matching = 1;
-				//startIndex++;
         startIndex = x;
 			}
 		}	
 		if(matching >= 3){
-			setMatchedHor(startIndex, y, matching);
+		  setMatchedHor(startIndex, y, matching)
 		}		
 	};
-
 	//search vertically
 	for(var x = 0; x < 6; x++){
 		var matching = 1;
@@ -264,13 +269,13 @@ Game.prototype.findMatch = function(){
 				matching++;
 			}else{
 				if(matching >= 3){
-					setMatchedVert(startIndex, x, matching);
+					setMatchedVert(startIndex, x, matching)
 				}
 				matching = 1;
 			}
 		}
 		if(matching >= 3){
-				setMatchedVert(startIndex, x, matching);
+      setMatchedVert(startIndex, x, matching)
 		}
 	};
 };
@@ -285,6 +290,7 @@ Game.prototype.destroyBlocks = function(){
       }
     }
   }
+  
 };
 
 Game.prototype.shiftBlocksUp = function(){
@@ -301,19 +307,27 @@ Game.prototype.shiftBlocksUp = function(){
 };
 
 Game.prototype.gameend = function(){
-  this.running = false;
-  this.board.length = 0;
-  this.selector = null;
-
+  this.state = 'gameover';
   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   
   this.ctx.fillStyle = 'white';
   this.ctx.textAlign = 'center';
   this.ctx.font = '30px Arial';
   this.ctx.fillText('GAME OVER', game.canvas.width / 2, game.canvas.height / 2);
+  
+  this.running = false;
+  this.board.length = 0;
+  this.selector = null;
+
 };
 
 Game.prototype.pause = function(){
+  this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  this.ctx.fillStyle = 'black';
+  this.ctx.textAlign = 'center';
+  this.ctx.font = '30px Arial';
+  this.ctx.fillText('PAUSED', game.canvas.width / 2, game.canvas.height / 2);
+
   this.selector.stop();
   for(var i = 0; i < this.board.length; i++){
     this.board[i].stop();
@@ -327,6 +341,14 @@ Game.prototype.update = function(){
 
       this.globaltick++;
       this.findtick++;
+
+      if(this.combo >= 3){
+        this.combotime++;
+      }
+
+      // if(this.combotime > 5){
+      //   this.combo = 0;
+      // }
 
       if(this.globaltick >= 35){
         this.selector.update();
@@ -346,7 +368,7 @@ Game.prototype.update = function(){
       this.isOver();
 
       document.getElementById('score').innerHTML = 'Score: ' + game.score;
-      document.getElementById('time').innerHTML = 'Time: ' + timer();
+      document.getElementById('time').innerHTML = 'Combo Time: ' + Math.floor(game.combotime / 60);
     };
     window.addEventListener('keydown', keyActions, true);
 
@@ -355,7 +377,7 @@ Game.prototype.update = function(){
   var self = this;
   if(this.state == 'gameover'){
     //stopeverything
-    self.pause();
+    this.gameend();
     this.state = 'gameover';
   }
 
@@ -407,6 +429,12 @@ window.onload = function(){
     yellowBlock:'./assets/images/yellowblock.png'
   }
   sounds = new Audio('./assets/sounds/move.wav');
+  // var sounds = {
+  //   move:'./assets/sounds/move.wav'
+  // }
+  // loadSounds(sounds, function(snds){
+  //   audio = snds;
+  // });
   loadImages(sprites, function(imgs){
     images = imgs;
     game = new Game();
