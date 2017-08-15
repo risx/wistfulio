@@ -7,15 +7,15 @@
 		revision="1.0-SNAPSHOT"
 		conf="runtime-internal"
 		confs="universal, universal-docs, universal-src, compile, runtime, test, provided, optional, windows, docker, linux, rpm, debian, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20170814190126"/>
+		date="20170814224126"/>
 	<dependencies>
 		<module organisation="com.typesafe.play" name="play-akka-http-server_2.12">
-			<revision name="2.6.3" status="release" pubdate="20170811130429" resolver="public" artresolver="public" homepage="https://playframework.com" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="44">
+			<revision name="2.6.3" status="release" pubdate="20170811130429" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://playframework.com" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="44">
 				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="2299" time="114" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-akka-http-server_2.12\ivy-2.6.3.xml" searched="true" original-local-location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-akka-http-server_2.12\ivy-2.6.3.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-akka-http-server_2.12/2.6.3/play-akka-http-server_2.12-2.6.3.pom"/>
+				<metadata-artifact status="no" details="" size="3312" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-akka-http-server_2.12\ivy-2.6.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-akka-http-server_2.12/2.6.3/play-akka-http-server_2.12-2.6.3.pom"/>
 				<caller organisation="risx.io" name="wistfulio_2.12" conf="compile, runtime-internal, runtime, optional" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="1.0-SNAPSHOT"/>
 				<artifacts>
-					<artifact name="play-akka-http-server_2.12" type="jar" ext="jar" status="successful" details="" size="91512" time="264" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-akka-http-server_2.12\jars\play-akka-http-server_2.12-2.6.3.jar">
+					<artifact name="play-akka-http-server_2.12" type="jar" ext="jar" status="no" details="" size="91512" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-akka-http-server_2.12\jars\play-akka-http-server_2.12-2.6.3.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-akka-http-server_2.12/2.6.3/play-akka-http-server_2.12-2.6.3.jar"/>
 					</artifact>
 				</artifacts>
@@ -46,49 +46,49 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="play-logback_2.12">
-			<revision name="2.6.3" status="release" pubdate="20170811130311" resolver="public" artresolver="public" homepage="https://playframework.com" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="41">
+			<revision name="2.6.3" status="release" pubdate="20170811130311" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://playframework.com" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="41">
 				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="2074" time="144" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-logback_2.12\ivy-2.6.3.xml" searched="true" original-local-location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-logback_2.12\ivy-2.6.3.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-logback_2.12/2.6.3/play-logback_2.12-2.6.3.pom"/>
+				<metadata-artifact status="no" details="" size="3117" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-logback_2.12\ivy-2.6.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-logback_2.12/2.6.3/play-logback_2.12-2.6.3.pom"/>
 				<caller organisation="risx.io" name="wistfulio_2.12" conf="compile, runtime-internal, runtime, optional" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="1.0-SNAPSHOT"/>
 				<artifacts>
-					<artifact name="play-logback_2.12" type="jar" ext="jar" status="successful" details="" size="10161" time="162" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-logback_2.12\jars\play-logback_2.12-2.6.3.jar">
+					<artifact name="play-logback_2.12" type="jar" ext="jar" status="no" details="" size="10161" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-logback_2.12\jars\play-logback_2.12-2.6.3.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-logback_2.12/2.6.3/play-logback_2.12-2.6.3.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="filters-helpers_2.12">
-			<revision name="2.6.3" status="release" pubdate="20170811130456" resolver="public" artresolver="public" homepage="https://playframework.com" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="40">
+			<revision name="2.6.3" status="release" pubdate="20170811130456" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://playframework.com" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="40">
 				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="2545" time="139" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\filters-helpers_2.12\ivy-2.6.3.xml" searched="true" original-local-location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\filters-helpers_2.12\ivy-2.6.3.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/filters-helpers_2.12/2.6.3/filters-helpers_2.12-2.6.3.pom"/>
+				<metadata-artifact status="no" details="" size="3363" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\filters-helpers_2.12\ivy-2.6.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/filters-helpers_2.12/2.6.3/filters-helpers_2.12-2.6.3.pom"/>
 				<caller organisation="risx.io" name="wistfulio_2.12" conf="compile, runtime-internal, runtime, optional" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="1.0-SNAPSHOT"/>
 				<artifacts>
-					<artifact name="filters-helpers_2.12" type="jar" ext="jar" status="successful" details="" size="275965" time="1110" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\filters-helpers_2.12\jars\filters-helpers_2.12-2.6.3.jar">
+					<artifact name="filters-helpers_2.12" type="jar" ext="jar" status="no" details="" size="275965" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\filters-helpers_2.12\jars\filters-helpers_2.12-2.6.3.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/filters-helpers_2.12/2.6.3/filters-helpers_2.12-2.6.3.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="play-server_2.12">
-			<revision name="2.6.3" status="release" pubdate="20170811130432" resolver="public" artresolver="public" homepage="https://playframework.com" downloaded="true" searched="true" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="3">
+			<revision name="2.6.3" status="release" pubdate="20170811130432" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://playframework.com" downloaded="false" searched="false" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="3">
 				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="2929" time="275" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-server_2.12\ivy-2.6.3.xml" searched="true" original-local-location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-server_2.12\ivy-2.6.3.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-server_2.12/2.6.3/play-server_2.12-2.6.3.pom"/>
+				<metadata-artifact status="no" details="" size="3577" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-server_2.12\ivy-2.6.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-server_2.12/2.6.3/play-server_2.12-2.6.3.pom"/>
 				<caller organisation="risx.io" name="wistfulio_2.12" conf="compile, runtime-internal, runtime, optional" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="1.0-SNAPSHOT"/>
 				<caller organisation="com.typesafe.play" name="play-akka-http-server_2.12" conf="default, compile, runtime, master" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="2.6.3"/>
 				<artifacts>
-					<artifact name="play-server_2.12" type="jar" ext="jar" status="successful" details="" size="212467" time="540" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-server_2.12\jars\play-server_2.12-2.6.3.jar">
+					<artifact name="play-server_2.12" type="jar" ext="jar" status="no" details="" size="212467" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-server_2.12\jars\play-server_2.12-2.6.3.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-server_2.12/2.6.3/play-server_2.12-2.6.3.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="play-guice_2.12">
-			<revision name="2.6.3" status="release" pubdate="20170811130531" resolver="public" artresolver="public" homepage="https://playframework.com" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="47">
+			<revision name="2.6.3" status="release" pubdate="20170811130531" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://playframework.com" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="47">
 				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="2880" time="120" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-guice_2.12\ivy-2.6.3.xml" searched="true" original-local-location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-guice_2.12\ivy-2.6.3.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-guice_2.12/2.6.3/play-guice_2.12-2.6.3.pom"/>
+				<metadata-artifact status="no" details="" size="3638" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-guice_2.12\ivy-2.6.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-guice_2.12/2.6.3/play-guice_2.12-2.6.3.pom"/>
 				<caller organisation="risx.io" name="wistfulio_2.12" conf="compile, runtime-internal, runtime, optional" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="1.0-SNAPSHOT"/>
 				<artifacts>
-					<artifact name="play-guice_2.12" type="jar" ext="jar" status="successful" details="" size="90747" time="213" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-guice_2.12\jars\play-guice_2.12-2.6.3.jar">
+					<artifact name="play-guice_2.12" type="jar" ext="jar" status="no" details="" size="90747" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-guice_2.12\jars\play-guice_2.12-2.6.3.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-guice_2.12/2.6.3/play-guice_2.12-2.6.3.jar"/>
 					</artifact>
 				</artifacts>
@@ -132,15 +132,15 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="play_2.12">
-			<revision name="2.6.3" status="release" pubdate="20170811130451" resolver="public" artresolver="public" homepage="https://playframework.com" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="4">
+			<revision name="2.6.3" status="release" pubdate="20170811130451" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://playframework.com" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="4">
 				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="8138" time="164" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play_2.12\ivy-2.6.3.xml" searched="true" original-local-location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play_2.12\ivy-2.6.3.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play_2.12/2.6.3/play_2.12-2.6.3.pom"/>
+				<metadata-artifact status="no" details="" size="7671" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play_2.12\ivy-2.6.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play_2.12/2.6.3/play_2.12-2.6.3.pom"/>
 				<caller organisation="com.typesafe.play" name="filters-helpers_2.12" conf="default, compile, runtime, master" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="2.6.3"/>
 				<caller organisation="com.typesafe.play" name="play-server_2.12" conf="default, compile, runtime, master" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="2.6.3"/>
 				<caller organisation="com.typesafe.play" name="play-guice_2.12" conf="default, compile, runtime, master" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="2.6.3"/>
 				<caller organisation="com.typesafe.play" name="play-logback_2.12" conf="default, compile, runtime, master" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="2.6.3"/>
 				<artifacts>
-					<artifact name="play_2.12" type="jar" ext="jar" status="successful" details="" size="2690695" time="5262" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play_2.12\jars\play_2.12-2.6.3.jar">
+					<artifact name="play_2.12" type="jar" ext="jar" status="no" details="" size="2690695" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play_2.12\jars\play_2.12-2.6.3.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play_2.12/2.6.3/play_2.12-2.6.3.jar"/>
 					</artifact>
 				</artifacts>
@@ -282,12 +282,12 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="play-json_2.12">
-			<revision name="2.6.3" status="release" pubdate="20170809145506" resolver="public" artresolver="public" homepage="https://github.com/playframework/play-json" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="26">
+			<revision name="2.6.3" status="release" pubdate="20170809145506" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/playframework/play-json" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="26">
 				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="4475" time="215" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-json_2.12\ivy-2.6.3.xml" searched="true" original-local-location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-json_2.12\ivy-2.6.3.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-json_2.12/2.6.3/play-json_2.12-2.6.3.pom"/>
+				<metadata-artifact status="no" details="" size="4897" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-json_2.12\ivy-2.6.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-json_2.12/2.6.3/play-json_2.12-2.6.3.pom"/>
 				<caller organisation="com.typesafe.play" name="play_2.12" conf="compile, runtime" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="2.6.3"/>
 				<artifacts>
-					<artifact name="play-json_2.12" type="jar" ext="jar" status="successful" details="" size="630859" time="718" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-json_2.12\jars\play-json_2.12-2.6.3.jar">
+					<artifact name="play-json_2.12" type="jar" ext="jar" status="no" details="" size="630859" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-json_2.12\jars\play-json_2.12-2.6.3.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-json_2.12/2.6.3/play-json_2.12-2.6.3.jar"/>
 					</artifact>
 				</artifacts>
@@ -331,12 +331,12 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="play-functional_2.12">
-			<revision name="2.6.3" status="release" pubdate="20170809145804" resolver="public" artresolver="public" homepage="https://github.com/playframework/play-json" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="27">
+			<revision name="2.6.3" status="release" pubdate="20170809145804" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/playframework/play-json" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="27">
 				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="1539" time="152" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-functional_2.12\ivy-2.6.3.xml" searched="true" original-local-location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-functional_2.12\ivy-2.6.3.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-functional_2.12/2.6.3/play-functional_2.12-2.6.3.pom"/>
+				<metadata-artifact status="no" details="" size="2718" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-functional_2.12\ivy-2.6.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-functional_2.12/2.6.3/play-functional_2.12-2.6.3.pom"/>
 				<caller organisation="com.typesafe.play" name="play-json_2.12" conf="compile, runtime" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="2.6.3"/>
 				<artifacts>
-					<artifact name="play-functional_2.12" type="jar" ext="jar" status="successful" details="" size="177951" time="295" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-functional_2.12\jars\play-functional_2.12-2.6.3.jar">
+					<artifact name="play-functional_2.12" type="jar" ext="jar" status="no" details="" size="177951" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-functional_2.12\jars\play-functional_2.12-2.6.3.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-functional_2.12/2.6.3/play-functional_2.12-2.6.3.jar"/>
 					</artifact>
 				</artifacts>
@@ -441,25 +441,25 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.akka" name="akka-slf4j_2.12">
-			<revision name="2.5.4" status="release" pubdate="20170810062207" resolver="public" artresolver="public" homepage="http://akka.io/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="19">
+			<revision name="2.5.4" status="release" pubdate="20170810062207" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://akka.io/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="19">
 				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
-				<metadata-artifact status="successful" details="" size="2441" time="197" location="C:\Users\rrris\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.12\ivy-2.5.4.xml" searched="true" original-local-location="C:\Users\rrris\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.12\ivy-2.5.4.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-slf4j_2.12/2.5.4/akka-slf4j_2.12-2.5.4.pom"/>
+				<metadata-artifact status="no" details="" size="3236" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.12\ivy-2.5.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-slf4j_2.12/2.5.4/akka-slf4j_2.12-2.5.4.pom"/>
 				<caller organisation="com.typesafe.play" name="play_2.12" conf="compile, runtime" rev="2.5.4" rev-constraint-default="2.5.4" rev-constraint-dynamic="2.5.4" callerrev="2.6.3"/>
 				<artifacts>
-					<artifact name="akka-slf4j_2.12" type="jar" ext="jar" status="successful" details="" size="15578" time="161" location="C:\Users\rrris\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.12\jars\akka-slf4j_2.12-2.5.4.jar">
+					<artifact name="akka-slf4j_2.12" type="jar" ext="jar" status="no" details="" size="15578" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.12\jars\akka-slf4j_2.12-2.5.4.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-slf4j_2.12/2.5.4/akka-slf4j_2.12-2.5.4.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="play-streams_2.12">
-			<revision name="2.6.3" status="release" pubdate="20170811125931" resolver="public" artresolver="public" homepage="https://playframework.com" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="11">
+			<revision name="2.6.3" status="release" pubdate="20170811125931" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://playframework.com" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="11">
 				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="3714" time="223" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-streams_2.12\ivy-2.6.3.xml" searched="true" original-local-location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-streams_2.12\ivy-2.6.3.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-streams_2.12/2.6.3/play-streams_2.12-2.6.3.pom"/>
+				<metadata-artifact status="no" details="" size="4132" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-streams_2.12\ivy-2.6.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-streams_2.12/2.6.3/play-streams_2.12-2.6.3.pom"/>
 				<caller organisation="com.typesafe.play" name="play_2.12" conf="compile, runtime" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="2.6.3"/>
 				<caller organisation="com.typesafe.play" name="play-akka-http-server_2.12" conf="default, compile, runtime, master" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="2.6.3"/>
 				<artifacts>
-					<artifact name="play-streams_2.12" type="jar" ext="jar" status="successful" details="" size="88293" time="190" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-streams_2.12\jars\play-streams_2.12-2.6.3.jar">
+					<artifact name="play-streams_2.12" type="jar" ext="jar" status="no" details="" size="88293" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-streams_2.12\jars\play-streams_2.12-2.6.3.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-streams_2.12/2.6.3/play-streams_2.12-2.6.3.jar"/>
 					</artifact>
 				</artifacts>
@@ -492,13 +492,13 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.akka" name="akka-stream_2.12">
-			<revision name="2.5.4" status="release" pubdate="20170810062044" resolver="public" artresolver="public" homepage="http://akka.io/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="13">
+			<revision name="2.5.4" status="release" pubdate="20170810062044" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://akka.io/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="13">
 				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
-				<metadata-artifact status="successful" details="" size="2632" time="165" location="C:\Users\rrris\.ivy2\cache\com.typesafe.akka\akka-stream_2.12\ivy-2.5.4.xml" searched="true" original-local-location="C:\Users\rrris\.ivy2\cache\com.typesafe.akka\akka-stream_2.12\ivy-2.5.4.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-stream_2.12/2.5.4/akka-stream_2.12-2.5.4.pom"/>
+				<metadata-artifact status="no" details="" size="3397" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.akka\akka-stream_2.12\ivy-2.5.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-stream_2.12/2.5.4/akka-stream_2.12-2.5.4.pom"/>
 				<caller organisation="com.typesafe.play" name="play-streams_2.12" conf="compile, runtime" rev="2.5.4" rev-constraint-default="2.5.4" rev-constraint-dynamic="2.5.4" callerrev="2.6.3"/>
 				<caller organisation="com.typesafe.akka" name="akka-http-core_2.12" conf="compile, runtime" rev="2.4.19" rev-constraint-default="2.4.19" rev-constraint-dynamic="2.4.19" callerrev="10.0.9"/>
 				<artifacts>
-					<artifact name="akka-stream_2.12" type="jar" ext="jar" status="successful" details="" size="3667109" time="3950" location="C:\Users\rrris\.ivy2\cache\com.typesafe.akka\akka-stream_2.12\jars\akka-stream_2.12-2.5.4.jar">
+					<artifact name="akka-stream_2.12" type="jar" ext="jar" status="no" details="" size="3667109" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.akka\akka-stream_2.12\jars\akka-stream_2.12-2.5.4.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-stream_2.12/2.5.4/akka-stream_2.12-2.5.4.jar"/>
 					</artifact>
 				</artifacts>
@@ -523,15 +523,15 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.akka" name="akka-actor_2.12">
-			<revision name="2.5.4" status="release" pubdate="20170810061700" resolver="public" artresolver="public" homepage="http://akka.io/" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="14">
+			<revision name="2.5.4" status="release" pubdate="20170810061700" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://akka.io/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="14">
 				<license name="Apache License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
-				<metadata-artifact status="successful" details="" size="2026" time="124" location="C:\Users\rrris\.ivy2\cache\com.typesafe.akka\akka-actor_2.12\ivy-2.5.4.xml" searched="true" original-local-location="C:\Users\rrris\.ivy2\cache\com.typesafe.akka\akka-actor_2.12\ivy-2.5.4.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-actor_2.12/2.5.4/akka-actor_2.12-2.5.4.pom"/>
+				<metadata-artifact status="no" details="" size="2991" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.akka\akka-actor_2.12\ivy-2.5.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-actor_2.12/2.5.4/akka-actor_2.12-2.5.4.pom"/>
 				<caller organisation="com.typesafe.akka" name="akka-parsing_2.12" conf="compile, runtime" rev="2.4.19" rev-constraint-default="2.4.19" rev-constraint-dynamic="2.4.19" callerrev="10.0.9"/>
 				<caller organisation="com.typesafe.akka" name="akka-stream_2.12" conf="compile, runtime" rev="2.5.4" rev-constraint-default="2.5.4" rev-constraint-dynamic="2.5.4" callerrev="2.5.4"/>
 				<caller organisation="com.typesafe.play" name="play_2.12" conf="compile, runtime" rev="2.5.4" rev-constraint-default="2.5.4" rev-constraint-dynamic="2.5.4" callerrev="2.6.3"/>
 				<caller organisation="com.typesafe.akka" name="akka-slf4j_2.12" conf="compile, runtime" rev="2.5.4" rev-constraint-default="2.5.4" rev-constraint-dynamic="2.5.4" callerrev="2.5.4"/>
 				<artifacts>
-					<artifact name="akka-actor_2.12" type="jar" ext="jar" status="successful" details="" size="3177384" time="4668" location="C:\Users\rrris\.ivy2\cache\com.typesafe.akka\akka-actor_2.12\jars\akka-actor_2.12-2.5.4.jar">
+					<artifact name="akka-actor_2.12" type="jar" ext="jar" status="no" details="" size="3177384" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.akka\akka-actor_2.12\jars\akka-actor_2.12-2.5.4.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/akka/akka-actor_2.12/2.5.4/akka-actor_2.12-2.5.4.jar"/>
 					</artifact>
 				</artifacts>
@@ -596,12 +596,12 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="play-netty-utils">
-			<revision name="2.6.3" status="release" pubdate="20170811124910" resolver="public" artresolver="public" homepage="https://playframework.com" downloaded="true" searched="true" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="7">
+			<revision name="2.6.3" status="release" pubdate="20170811124910" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://playframework.com" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="7">
 				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="1848" time="130" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-netty-utils\ivy-2.6.3.xml" searched="true" original-local-location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-netty-utils\ivy-2.6.3.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-netty-utils/2.6.3/play-netty-utils-2.6.3.pom"/>
+				<metadata-artifact status="no" details="" size="2971" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-netty-utils\ivy-2.6.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/play-netty-utils/2.6.3/play-netty-utils-2.6.3.pom"/>
 				<caller organisation="com.typesafe.play" name="play_2.12" conf="compile, runtime" rev="2.6.3" rev-constraint-default="2.6.3" rev-constraint-dynamic="2.6.3" callerrev="2.6.3"/>
 				<artifacts>
-					<artifact name="play-netty-utils" type="jar" ext="jar" status="successful" details="" size="19731" time="393" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-netty-utils\jars\play-netty-utils-2.6.3.jar">
+					<artifact name="play-netty-utils" type="jar" ext="jar" status="no" details="" size="19731" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\play-netty-utils\jars\play-netty-utils-2.6.3.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/play-netty-utils/2.6.3/play-netty-utils-2.6.3.jar"/>
 					</artifact>
 				</artifacts>
@@ -681,13 +681,13 @@
 			</revision>
 		</module>
 		<module organisation="com.typesafe.play" name="twirl-api_2.12">
-			<revision name="1.3.4" status="release" pubdate="20170808162107" resolver="public" artresolver="public" homepage="https://github.com/playframework/twirl" downloaded="true" searched="true" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="1">
+			<revision name="1.3.4" status="release" pubdate="20170808162107" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/playframework/twirl" downloaded="false" searched="false" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="1">
 				<license name="Apache-2.0" url="http://www.apache.org/licenses/LICENSE-2.0.html"/>
-				<metadata-artifact status="successful" details="" size="1900" time="154" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\twirl-api_2.12\ivy-1.3.4.xml" searched="true" original-local-location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\twirl-api_2.12\ivy-1.3.4.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/twirl-api_2.12/1.3.4/twirl-api_2.12-1.3.4.pom"/>
+				<metadata-artifact status="no" details="" size="2976" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\twirl-api_2.12\ivy-1.3.4.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/typesafe/play/twirl-api_2.12/1.3.4/twirl-api_2.12-1.3.4.pom"/>
 				<caller organisation="risx.io" name="wistfulio_2.12" conf="compile, runtime-internal, runtime, optional" rev="1.3.4" rev-constraint-default="1.3.4" rev-constraint-dynamic="1.3.4" callerrev="1.0-SNAPSHOT"/>
 				<caller organisation="com.typesafe.play" name="play_2.12" conf="compile, runtime" rev="1.3.4" rev-constraint-default="1.3.4" rev-constraint-dynamic="1.3.4" callerrev="2.6.3"/>
 				<artifacts>
-					<artifact name="twirl-api_2.12" type="jar" ext="jar" status="successful" details="" size="76127" time="319" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\twirl-api_2.12\jars\twirl-api_2.12-1.3.4.jar">
+					<artifact name="twirl-api_2.12" type="jar" ext="jar" status="no" details="" size="76127" time="0" location="C:\Users\rrris\.ivy2\cache\com.typesafe.play\twirl-api_2.12\jars\twirl-api_2.12-1.3.4.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/typesafe/play/twirl-api_2.12/1.3.4/twirl-api_2.12-1.3.4.jar"/>
 					</artifact>
 				</artifacts>

@@ -1,6 +1,17 @@
 node_modules
 *.txt
 
+#scala
+logs
+target
+/.idea
+/.idea_modules
+/.classpath
+/.project
+/.settings
+/RUNNING_PID
+
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db

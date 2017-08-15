@@ -30,7 +30,7 @@
         window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
                                    || window[vendors[x]+'CancelRequestAnimationFrame'];
     }
- 
+
     if (!window.requestAnimationFrame)
         window.requestAnimationFrame = function(callback, element) {
             var currTime = new Date().getTime();
@@ -40,7 +40,7 @@
             lastTime = currTime + timeToCall;
             return id;
         };
- 
+
     if (!window.cancelAnimationFrame)
         window.cancelAnimationFrame = function(id) {
             clearTimeout(id);
@@ -51,15 +51,17 @@ var timer = function(){
 		function checkTime(i){
 			return i = (i < 10) ? '0' + i : i;
 		}
+		var counter;
 		var tick = (function(){
 			var counter = 0;
 			return function(){
-				 counter++;
+				 return counter++;
 			}
-		})();
+		})(counter);
 
 		if(game.state === 'active'){
-			return tick();
+			tick();
+			return counter;
 		}
 };
 
@@ -140,16 +142,16 @@ var findBlock = function(x, y){
         return game.board[i];
     }
   }
-  
+
 };
 
 var removeBlocks = function(blocks){
 		function remove(block){
       for(var i = 0; i < game.board.length; i++){
-          if(game.board[i].posx === block.posx
-          && game.board[i].posy === block.posy){
-          game.board.splice(i, 1);
-          }
+				if(game.board[i].posx === block.posx
+				&& game.board[i].posy === block.posy){
+					game.board.splice(i, 1);
+				}
       }
 		}
 		remove(blocks);
@@ -185,13 +187,13 @@ var draw = function(object, type){
 			this.ctx.stroke();
 			this.ctx.closePath();
 
-			// //debug info
-			// this.ctx.fillStyle='white';
-			// this.ctx.font='20px Oswald, sans-serif';
+			//debug info
+			this.ctx.fillStyle='green';
+			this.ctx.font='20px Oswald, sans-serif';
 			// this.ctx.fillText(object.posx, object.x + 5, object.y + 50);
 			// this.ctx.fillText(object.posy, object.x + 25, object.y + 50);
-			// this.ctx.fillText(object.color, object.x + 25, object.y + 30);
-			// //end debug info
+			this.ctx.fillText(object.matchedindex, object.x + 25, object.y + 30);
+			//end debug info
 		} else {
 			this.ctx.beginPath();
 			this.ctx.strokeStyle = 'white';

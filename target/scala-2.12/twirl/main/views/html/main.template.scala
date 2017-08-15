@@ -37,13 +37,24 @@ Seq[Any](format.raw/*7.32*/("""
         """),format.raw/*13.9*/("""<title>"""),_display_(/*13.17*/title),format.raw/*13.22*/("""</title>
         <link rel="stylesheet" media="screen" href=""""),_display_(/*14.54*/routes/*14.60*/.Assets.versioned("stylesheets/main.css")),format.raw/*14.101*/("""">
         <link rel="shortcut icon" type="image/png" href=""""),_display_(/*15.59*/routes/*15.65*/.Assets.versioned("images/favicon.png")),format.raw/*15.104*/("""">
-
+        <meta name="keywords" content="risx, wistful, tetris attack, panel de pon, pokemon puzzle league, puzle league, wistfulio">
+        <meta property="og:description" content="Spiritual successor to Tetris Attack">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        """),format.raw/*20.32*/("""
-        """),_display_(/*21.10*/content),format.raw/*21.17*/("""
+        """),format.raw/*22.32*/("""
+        """),_display_(/*23.10*/content),format.raw/*23.17*/("""
 
-      """),format.raw/*23.7*/("""<script src=""""),_display_(/*23.21*/routes/*23.27*/.Assets.versioned("javascripts/main.js")),format.raw/*23.67*/("""" type="text/javascript"></script>
+      """),format.raw/*25.7*/("""<!-- <script>
+        (function(i,s,o,g,r,a,m)"""),format.raw/*26.33*/("""{"""),format.raw/*26.34*/("""i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()"""),format.raw/*26.84*/("""{"""),format.raw/*26.85*/("""
+        """),format.raw/*27.9*/("""(i[r].q=i[r].q||[]).push(arguments)"""),format.raw/*27.44*/("""}"""),format.raw/*27.45*/(""",i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        """),format.raw/*29.9*/("""}"""),format.raw/*29.10*/(""")(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-99573427-1', 'auto');
+        ga('send', 'pageview');
+      </script> -->
+
     </body>
 </html>
 """))
@@ -62,11 +73,11 @@ Seq[Any](format.raw/*7.32*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Mon Aug 14 19:02:43 PDT 2017
+                  DATE: Mon Aug 14 23:53:41 PDT 2017
                   SOURCE: C:/Users/rrris/Dropbox/github/wistfulio/app/views/main.scala.html
-                  HASH: 2d7bb605c571dab93f940a8a3370ee8ea17610b5
-                  MATRIX: 992->266|1117->296|1147->300|1230->408|1267->418|1302->426|1328->431|1418->494|1433->500|1496->541|1585->603|1600->609|1661->648|1728->778|1766->789|1794->796|1831->806|1872->820|1887->826|1948->866
-                  LINES: 26->7|31->7|33->9|36->12|37->13|37->13|37->13|38->14|38->14|38->14|39->15|39->15|39->15|43->20|44->21|44->21|46->23|46->23|46->23|46->23
+                  HASH: d2191a55a3f2f200ab8c0931a6399106c13e94ce
+                  MATRIX: 992->266|1117->296|1147->300|1230->408|1267->418|1302->426|1328->431|1418->494|1433->500|1496->541|1585->603|1600->609|1661->648|2028->1078|2066->1089|2094->1096|2131->1106|2206->1153|2235->1154|2313->1204|2342->1205|2379->1215|2442->1250|2471->1251|2639->1392|2668->1393
+                  LINES: 26->7|31->7|33->9|36->12|37->13|37->13|37->13|38->14|38->14|38->14|39->15|39->15|39->15|45->22|46->23|46->23|48->25|49->26|49->26|49->26|49->26|50->27|50->27|50->27|52->29|52->29
                   -- GENERATED --
               */
           

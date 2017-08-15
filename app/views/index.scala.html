@@ -1,5 +1,42 @@
 @()
 
-@main("Welcome to Play") {
-  <h1>Welcome to Play!</h1>
+@main("Wistful") {
+  <div class='container'>
+    <ul class='nav'>
+      <li>
+        <a href='/'>Play</a>
+        <a id='leaderboard'>Leaderboard</a>
+      </li>
+    </ul>
+
+  <div class='home-container'>
+    <div class='left-content'>
+      <div class="gameinfo">
+        <div id='score'>Score: </div>
+        <div id='time'>Time: </div>
+        <!--<div id='fps'>FPS: </div>-->
+      </div>
+    </div>
+      <div class='game-content'>
+        <canvas id='wistful' width='336' height='680'></canvas>
+      </div>
+    <div class='right-content'>
+      <div class="notes">
+        <p> <b>Controls</b> <p>
+        <li>Arrow keys: Move</li>
+        <li>Shift: Toggles Speed</li>
+        <li>Space: Switch Blocks</li>
+        <li>P: Pause</li>
+        <p>
+        <b>Notes</b><br>
+        There's a lot of known issues but if you want to or DM me on <a href="https://twitter.com/risx_" target="_blank">twitter</a> feel free to.
+        The game is very much still in development.
+        </p>
+      </div>
+      <button id="createGameButton" class="btn btn-default">Start</button>
+    </div>
+  </div>
+  <script src="@routes.Assets.versioned("javascripts/core.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("javascripts/block.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("javascripts/game.js")" type="text/javascript"></script>
 }

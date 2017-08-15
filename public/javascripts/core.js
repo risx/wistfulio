@@ -30,7 +30,7 @@
         window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
                                    || window[vendors[x]+'CancelRequestAnimationFrame'];
     }
- 
+
     if (!window.requestAnimationFrame)
         window.requestAnimationFrame = function(callback, element) {
             var currTime = new Date().getTime();
@@ -40,7 +40,7 @@
             lastTime = currTime + timeToCall;
             return id;
         };
- 
+
     if (!window.cancelAnimationFrame)
         window.cancelAnimationFrame = function(id) {
             clearTimeout(id);
@@ -61,7 +61,7 @@ var timer = function(){
 
 		if(game.state === 'active'){
 			tick();
-			return counter; 
+			return counter;
 		}
 };
 
@@ -142,7 +142,7 @@ var findBlock = function(x, y){
         return game.board[i];
     }
   }
-  
+
 };
 
 var removeBlocks = function(blocks){

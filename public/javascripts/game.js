@@ -184,14 +184,14 @@ Game.prototype.swap = function(){
     firstBlock.posx += 1;
     secondBlock.x -= this.blocksize;
     secondBlock.posx -= 1;
-  } else 
-  if(secondBlock !== undefined && secondBlock.matched === false 
+  } else
+  if(secondBlock !== undefined && secondBlock.matched === false
      && secondBlock.falling === false && secondBlock.floating === false
      && firstBlock === undefined){
     secondBlock.x -= this.blocksize;
     secondBlock.posx -= 1;
-  } else 
-  if(firstBlock !== undefined && firstBlock.matched === false 
+  } else
+  if(firstBlock !== undefined && firstBlock.matched === false
       && firstBlock.falling === false && firstBlock.floating === false
       && secondBlock === undefined){
     firstBlock.x += this.blocksize;
@@ -201,7 +201,7 @@ Game.prototype.swap = function(){
 
 Game.prototype.moveDown = function(){
   for(var i = 0; i < this.board.length; i++){
-    if(this.board[i].falling === true && this.board[i].floating === true 
+    if(this.board[i].falling === true && this.board[i].floating === true
         && this.board[i].active === true){
 
         var below = findBlock(this.board[i].posx,this.board[i].posy + 1);
@@ -252,10 +252,10 @@ Game.prototype.findMatch = function(){
 				matching = 1;
         startIndex = x;
 			}
-		}	
+		}
 		if(matching >= 3){
 		  setMatchedHor(startIndex, y, matching)
-		}		
+		}
 	};
 	//search vertically
 	for(var x = 0; x < 6; x++){
@@ -290,14 +290,14 @@ Game.prototype.destroyBlocks = function(){
       }
     }
   }
-  
+
 };
 
 Game.prototype.shiftBlocksUp = function(){
   var inc = 5;
   for(var i = 0; i < this.board.length; i++){
     if(this.board[i].y < 680 && this.board[i].active === false){
-      for(var i = 0; i < this.board.length; i++){  
+      for(var i = 0; i < this.board.length; i++){
         this.board[i].y -= inc;
       }
       this.selector.y -= inc;
@@ -309,12 +309,12 @@ Game.prototype.shiftBlocksUp = function(){
 Game.prototype.gameend = function(){
   this.state = 'gameover';
   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  
+
   this.ctx.fillStyle = 'white';
   this.ctx.textAlign = 'center';
   this.ctx.font = '30px Arial';
   this.ctx.fillText('GAME OVER', game.canvas.width / 2, game.canvas.height / 2);
-  
+
   this.running = false;
   this.board.length = 0;
   this.selector = null;
@@ -352,7 +352,7 @@ Game.prototype.update = function(){
 
       if(this.globaltick >= 35){
         this.selector.update();
-        for(var i = 0; i < this.board.length; i++){   
+        for(var i = 0; i < this.board.length; i++){
           this.board[i].update();
         }
         this.globaltick = 0;
@@ -421,30 +421,30 @@ window.onload = function(){
   this.canvas = document.querySelector('#wistful');
   this.ctx = this.canvas.getContext('2d');
 
-  var sprites = {
-    blueBlock:'./assets/images/blueblock.png',
-    greenBlock:'./assets/images/greenblock.png',
-    purpleBlock:'./assets/images/purpleblock.png',
-    redBlock:'./assets/images/redblock.png',
-    yellowBlock:'./assets/images/yellowblock.png'
-  }
-  sounds = new Audio('./assets/sounds/move.wav');
+  var sprites = {};
+  // sounds = new Audio('./assets/sounds/move.wav');
   // var sounds = {
   //   move:'./assets/sounds/move.wav'
   // }
   // loadSounds(sounds, function(snds){
   //   audio = snds;
   // });
-  loadImages(sprites, function(imgs){
-    images = imgs;
-    game = new Game();
-  });
+  // loadImages(sprites, function(imgs){
+  //   images = imgs;
+  //
+  // });
+  game = new Game();
 
+  document.getElementById('createGameButton').onclick = function(){
+    if(game.running == false){
+      game.start();
+    };
+  };
 };
 
-var start = function(){
-  if(game.running == false){
-    game.start();
-  }
-
-};
+// var start = function(){
+//   if(game.running == false){
+//     game.start();
+//   }
+//
+// };
